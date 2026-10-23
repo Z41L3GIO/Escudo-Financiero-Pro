@@ -1,0 +1,2394 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escudo Financiero Pro | Ciberdefensa Fintech & Validación SIPRES - CONDUSEF</title>
+  
+  <!-- Meta SEO y PWA Ready -->
+  <meta name="description" content="Plataforma de ciberdefensa fintech en México: Verificación de instituciones en SIPRES/CNBV, generador oficial de quejas CONDUSEF, analizador de riesgo con IA y radar comunitario de fraudes.">
+  <meta name="theme-color" content="#0A1128">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cyber: {
+              bg: '#0A1128',
+              surface: '#0F1A3A',
+              card: '#13224C',
+              border: '#1E3266',
+              cyan: '#06B6D4',
+              cyanGlow: '#22D3EE',
+              safe: '#10B981',
+              warning: '#F59E0B',
+              danger: '#EF4444',
+              accent: '#3B82F6'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Fira Code', 'Consolas', 'monospace'],
+            legal: ['Georgia', 'Times New Roman', 'serif']
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'radar-spin': 'radar 4s linear infinite',
+            'marquee': 'marquee 25s linear infinite',
+            'float': 'float 3s ease-in-out infinite'
+          },
+          keyframes: {
+            radar: {
+              '0%': { transform: 'rotate(0deg)' },
+              '100%': { transform: 'rotate(360deg)' }
+            },
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-50%)' }
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-6px)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Estilos personalizados para efectos de Ciberdefensa */
+    body {
+      background-color: #0A1128;
+      color: #E2E8F0;
+      overflow-x: hidden;
+    }
+
+    /* Fondo de malla de ciberdefensa */
+    .cyber-grid {
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.12) 0%, transparent 60%),
+        linear-gradient(rgba(30, 50, 102, 0.25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 50, 102, 0.25) 1px, transparent 1px);
+      background-size: 100% 100%, 32px 32px, 32px 32px;
+    }
+
+    /* Efectos de cristal esmerilado */
+    .glass-panel {
+      background: rgba(15, 26, 58, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(34, 211, 238, 0.15);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .glass-panel-danger {
+      background: rgba(45, 15, 25, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .glass-panel-safe {
+      background: rgba(10, 38, 30, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    /* Scrollbar estilizada */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0A1128;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1E3266;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #06B6D4;
+    }
+
+    /* Estilos de Impresión Legal CONDUSEF */
+    @media print {
+      body * {
+        visibility: hidden !important;
+      }
+      #print-area, #print-area * {
+        visibility: visible !important;
+      }
+      #print-area {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 2.5cm !important;
+        background: white !important;
+        color: #111827 !important;
+        font-family: 'Georgia', 'Times New Roman', serif !important;
+        font-size: 11pt !important;
+        line-height: 1.6 !important;
+        box-shadow: none !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      @page {
+        size: letter portrait;
+        margin: 2cm;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen cyber-grid font-sans flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
+
+  <!-- MARQUEE DE ALERTAS EN VIVO (CONDUSEF / SIPRES RADAR) -->
+  <header class="w-full bg-[#070D1F] border-b border-cyber-border/70 sticky top-0 z-50 backdrop-blur-md">
+    <div class="bg-gradient-to-r from-red-950/80 via-slate-900/90 to-red-950/80 border-b border-red-500/30 text-xs py-1.5 px-4 overflow-hidden relative">
+      <div class="flex items-center space-x-3 whitespace-nowrap">
+        <span class="inline-flex items-center gap-1.5 bg-red-500/20 text-red-400 font-semibold px-2 py-0.5 rounded-full border border-red-500/40 shrink-0">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+          ALERTA NACIONAL SIPRES
+        </span>
+        <div class="overflow-hidden w-full relative">
+          <div class="inline-block animate-marquee font-mono text-slate-300">
+            <span class="mx-4 text-amber-400">⚠️ ADVERTENCIA CONDUSEF:</span> Detectadas 28 plataformas apócrifas suplantando la identidad de SOFIPOs reguladas.
+            <span class="mx-4 text-red-400">🔴 FRAUDE IDENTIFICADO:</span> "Kubo Inversiones App" y "Smart Business Corp" carecen de autorización para captar recursos públicos.
+            <span class="mx-4 text-emerald-400">🛡️ SIPRES OFICIAL:</span> Verifica siempre el folio de registro antes de realizar depósitos o contrataciones digitales.
+            <span class="mx-4 text-cyan-400">⚡ CIBERDEFENSA:</span> Nunca proporciones contraseñas bancarias, tokens o depósitos anticipados para "liberar créditos".
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BARRA SUPERIOR DE NAVEGACIÓN Y ACCIONES -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logotipo y Marca -->
+        <div class="flex items-center gap-3">
+          <div class="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-500 p-0.5 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+            <div class="w-full h-full bg-[#0A1128] rounded-[10px] flex items-center justify-center">
+              <i data-lucide="shield-check" class="w-6 h-6 text-cyan-400"></i>
+            </div>
+            <div class="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-[#0A1128] animate-pulse"></div>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-lg tracking-wider text-white bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-100 to-cyan-400">
+                ESCUDO FINANCIERO <span class="text-xs bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 px-1.5 py-0.5 rounded font-mono font-semibold">PRO</span>
+              </span>
+            </div>
+            <p class="text-[10px] text-slate-400 hidden sm:block tracking-wide">CIBERDEFENSA FINTECH & VALIDADOR SIPRES CONDUSEF</p>
+          </div>
+        </div>
+
+        <!-- Navegación de Escritorio (Tabs) -->
+        <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 bg-slate-900/80 p-1.5 rounded-xl border border-slate-800">
+          <button onclick="switchTab('sipres')" id="tab-btn-sipres" class="nav-tab active-tab px-3.5 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all duration-200 text-cyan-400 bg-cyan-950/60 border border-cyan-500/30 shadow-sm shadow-cyan-500/20">
+            <i data-lucide="building-2" class="w-4 h-4"></i>
+            <span>Buscador SIPRES</span>
+          </button>
+          <button onclick="switchTab('queja')" id="tab-btn-queja" class="nav-tab px-3.5 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800/60">
+            <i data-lucide="file-text" class="w-4 h-4"></i>
+            <span>Queja CONDUSEF</span>
+          </button>
+          <button onclick="switchTab('analizador')" id="tab-btn-analizador" class="nav-tab px-3.5 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800/60">
+            <i data-lucide="cpu" class="w-4 h-4"></i>
+            <span>Analizador IA</span>
+          </button>
+          <button onclick="switchTab('radar')" id="tab-btn-radar" class="nav-tab px-3.5 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800/60">
+            <i data-lucide="radar" class="w-4 h-4"></i>
+            <span>Radar Alertas</span>
+            <span id="badge-radar-count" class="bg-red-500 text-white text-[10px] px-1.5 py-0.2 rounded-full font-bold">4</span>
+          </button>
+        </nav>
+
+        <!-- Atajo rápido / Estado de Conexión -->
+        <div class="flex items-center gap-3">
+          <div class="hidden lg:flex items-center gap-2 bg-slate-900/90 border border-slate-800 px-3 py-1.5 rounded-lg text-xs text-slate-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="font-mono text-[11px]">SIPRES LIVE SYNC</span>
+          </div>
+
+          <button onclick="focusGlobalSearch()" class="hidden sm:flex items-center gap-2 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-300 px-3 py-1.5 rounded-lg text-xs transition duration-200 shadow-inner group">
+            <i data-lucide="search" class="w-3.5 h-3.5 text-cyan-400 group-hover:scale-110 transition-transform"></i>
+            <span class="text-slate-400">Buscar...</span>
+            <kbd class="bg-slate-900 border border-slate-700 text-[10px] font-mono px-1.5 py-0.5 rounded text-cyan-300">Ctrl+K</kbd>
+          </button>
+
+          <button onclick="openModalReporte()" class="bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white text-xs font-bold px-3.5 py-2 rounded-lg flex items-center gap-1.5 shadow-lg shadow-red-600/30 transition-all duration-200 active:scale-95">
+            <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+            <span class="hidden sm:inline">Reportar Fraude</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL DINÁMICO (VISTAS SPA) -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-1">
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 1: BUSCADOR SIPRES / CNBV           -->
+    <!-- ========================================== -->
+    <section id="view-sipres" class="tab-view block space-y-6">
+      
+      <!-- Hero de Bienvenida y Búsqueda Rápida -->
+      <div class="glass-panel rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+        <div class="absolute -right-16 -bottom-16 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-16 -top-16 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-medium mb-3">
+            <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+            VALIDACIÓN OFICIAL EN TIEMPO REAL
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Validador de Entidades Financieras <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">SIPRES & CNBV</span>
+          </h1>
+          <p class="text-slate-300 text-sm sm:text-base mt-2 leading-relaxed">
+            Comprueba en segundos si un banco, fintech, SOFIPO o financiera cuenta con registro legal ante la CONDUSEF o si se trata de un esquema piramidal, montadeudas o clonación de identidad.
+          </p>
+
+          <!-- Input de Búsqueda Inteligente -->
+          <div class="mt-6 relative">
+            <div class="relative flex items-center">
+              <i data-lucide="search" class="w-5 h-5 text-cyan-400 absolute left-4 pointer-events-none"></i>
+              <input 
+                id="search-input" 
+                type="text" 
+                placeholder="Busca por nombre comercial, razón social, RFC o sector (ej. 'BBVA', 'Kubo', 'InverCapital', 'Casa de Bolsa')..."
+                class="w-full bg-slate-900/90 text-white placeholder-slate-400 pl-12 pr-28 py-3.5 rounded-xl border border-slate-700 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 text-sm sm:text-base shadow-xl transition-all"
+                oninput="handleSearch()"
+              >
+              <div class="absolute right-3 flex items-center gap-2">
+                <button onclick="clearSearch()" id="clear-search-btn" class="hidden text-slate-400 hover:text-white p-1 rounded transition">
+                  <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+                <span class="hidden sm:inline text-xs font-mono bg-slate-800 text-slate-400 px-2 py-1 rounded border border-slate-700">ESC limpia</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filtros Rápidos por Categoría -->
+          <div class="flex flex-wrap items-center gap-2 mt-4">
+            <span class="text-xs text-slate-400 font-medium mr-1">Filtros:</span>
+            <button onclick="setFilter('all')" id="filter-btn-all" class="filter-chip active-filter px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-600 text-white border border-cyan-400 transition">
+              Todos (<span id="count-all">0</span>)
+            </button>
+            <button onclick="setFilter('autorizada')" id="filter-btn-autorizada" class="filter-chip px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900/80 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-950/40 transition">
+              <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 mr-1.5"></span>
+              Autorizadas (<span id="count-autorizada">0</span>)
+            </button>
+            <button onclick="setFilter('alerta')" id="filter-btn-alerta" class="filter-chip px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900/80 text-red-400 border border-red-500/30 hover:bg-red-950/40 transition">
+              <span class="inline-block w-2 h-2 rounded-full bg-red-400 mr-1.5 animate-pulse"></span>
+              Alertas / Suplantación (<span id="count-alerta">0</span>)
+            </button>
+            <button onclick="setFilter('fraude')" id="filter-btn-fraude" class="filter-chip px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900/80 text-rose-300 border border-rose-500/30 hover:bg-rose-950/40 transition">
+              <span class="inline-block w-2 h-2 rounded-full bg-rose-500 mr-1.5"></span>
+              Fraudes / Pirámides (<span id="count-fraude">0</span>)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resumen de Resultados -->
+      <div class="flex items-center justify-between text-xs text-slate-400 px-1">
+        <span id="results-count-text">Mostrando resultados verificados...</span>
+        <span class="font-mono text-cyan-400/80 flex items-center gap-1">
+          <i data-lucide="database" class="w-3.5 h-3.5"></i> Base SIPRES V3.1 Actualizada
+        </span>
+      </div>
+
+      <!-- Cuadrícula de Entidades Financieras -->
+      <div id="institutions-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Renderizado dinámicamente con JavaScript -->
+      </div>
+
+      <!-- Estado Vacío cuando no hay resultados -->
+      <div id="no-results-state" class="hidden glass-panel rounded-2xl p-12 text-center max-w-lg mx-auto">
+        <div class="w-16 h-16 bg-red-500/10 text-red-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-red-500/20">
+          <i data-lucide="alert-octagon" class="w-8 h-8"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white">No se encontró registro oficial en SIPRES</h3>
+        <p class="text-sm text-slate-400 mt-2">
+          Si la empresa que buscas promete inversiones o créditos y no aparece aquí, <strong class="text-red-400">podría ser una entidad fraudulenta o no regulada</strong>.
+        </p>
+        <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+          <button onclick="openModalReporte()" class="px-4 py-2 bg-red-600 hover:bg-red-500 text-white rounded-lg text-xs font-bold transition">
+            Reportar como sospechosa
+          </button>
+          <button onclick="clearSearch()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-semibold transition">
+            Ver todas las entidades
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 2: GENERADOR DE QUEJA CONDUSEF      -->
+    <!-- ========================================== -->
+    <section id="view-queja" class="tab-view hidden space-y-6">
+      
+      <!-- Encabezado del Módulo -->
+      <div class="glass-panel rounded-2xl p-6 sm:p-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs font-mono font-medium mb-2">
+              <i data-lucide="scale" class="w-3.5 h-3.5"></i>
+              VENTANILLA ÚNICA DE RECLAMACIÓN
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+              Generador Oficial de Quejas ante la <span class="text-cyan-400">CONDUSEF</span>
+            </h2>
+            <p class="text-slate-300 text-sm mt-1 max-w-2xl">
+              Genera tu escrito formal con validez jurídica según el Art. 59 Bis 1 de la Ley de Protección y Defensa al Usuario de Servicios Financieros, listo para impresión o radicación electrónica.
+            </p>
+          </div>
+          <button onclick="fillMockComplaintData()" class="self-start md:self-auto px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-cyan-300 text-xs font-mono font-semibold flex items-center gap-2 transition active:scale-95 shadow">
+            <i data-lucide="wand-2" class="w-4 h-4 text-cyan-400"></i>
+            <span>⚡ Rellenar Datos Demo</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Formulario Estructurado en 4 Bloques -->
+      <form id="complaint-form" onsubmit="event.preventDefault(); generateFormalComplaint();" class="space-y-6">
+        
+        <!-- BLOQUE 1: DATOS DEL USUARIO (QUEJOSO) -->
+        <div class="glass-panel rounded-2xl p-6">
+          <div class="flex items-center gap-3 border-b border-slate-800 pb-4 mb-6">
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-sm">
+              1
+            </div>
+            <div>
+              <h3 class="text-base font-bold text-white">Datos del Usuario Reclamante</h3>
+              <p class="text-xs text-slate-400">Información para acreditar personalidad y recibir notificaciones legales.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Tipo de Persona *</label>
+              <select id="user-tipo-persona" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+                <option value="Física">Persona Física</option>
+                <option value="Moral">Persona Moral</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Nombre(s) *</label>
+              <input id="user-nombre" type="text" required placeholder="Ej. Carlos Eduardo" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Apellido Paterno *</label>
+              <input id="user-paterno" type="text" required placeholder="Ej. Mendoza" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Apellido Materno</label>
+              <input id="user-materno" type="text" placeholder="Ej. Soto" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">CURP (18 caracteres) *</label>
+              <input id="user-curp" type="text" required maxlength="18" placeholder="MESC890314HDFNR03" class="w-full bg-slate-900 border border-slate-700 text-white font-mono rounded-lg p-2.5 text-xs uppercase focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Teléfono Móvil (10 dígitos) *</label>
+              <input id="user-telefono" type="tel" required maxlength="10" placeholder="5512345678" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+            </div>
+
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Correo Electrónico Oficial *</label>
+              <input id="user-email" type="email" required placeholder="carlos.mendoza@email.com" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+            </div>
+
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Calle y Número Exterior / Interior *</label>
+              <input id="user-calle" type="text" required placeholder="Av. Insurgentes Sur 1450, Int 402" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Colonia *</label>
+              <input id="user-colonia" type="text" required placeholder="Actipan" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Alcaldía / Municipio *</label>
+              <input id="user-municipio" type="text" required placeholder="Benito Juárez" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Código Postal *</label>
+              <input id="user-cp" type="text" required maxlength="5" placeholder="03230" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Entidad Federativa *</label>
+              <select id="user-estado" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+                <option value="Ciudad de México">Ciudad de México</option>
+                <option value="Estado de México">Estado de México</option>
+                <option value="Jalisco">Jalisco</option>
+                <option value="Nuevo León">Nuevo León</option>
+                <option value="Querétaro">Querétaro</option>
+                <option value="Puebla">Puebla</option>
+                <option value="Veracruz">Veracruz</option>
+                <option value="Guanajuato">Guanajuato</option>
+                <option value="Yucatán">Yucatán</option>
+                <option value="Otra entidad">Otra entidad federativa...</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOQUE 2: UNIDAD DE ATENCIÓN A USUARIOS (UAU) -->
+        <div class="glass-panel rounded-2xl p-6">
+          <div class="flex items-center gap-3 border-b border-slate-800 pb-4 mb-6">
+            <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-sm">
+              2
+            </div>
+            <div>
+              <h3 class="text-base font-bold text-white">Unidad de Atención a Usuarios (UAU CONDUSEF)</h3>
+              <p class="text-xs text-slate-400">Selecciona la sede jurisdiccional correspondiente a tu domicilio.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            <div class="md:col-span-1 space-y-3">
+              <label class="block text-xs font-semibold text-slate-300">Delegación Regional / Unidad *</label>
+              <select id="uau-select" onchange="updateUAUDetails()" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+                <option value="UAU-A1">UAU (A1) - Ciudad de México Central</option>
+                <option value="UAU-A4">UAU (A4) - Estado de México (Tlalnepantla)</option>
+                <option value="UAU-A2">UAU (A2) - Jalisco (Guadalajara)</option>
+                <option value="UAU-A3">UAU (A3) - Nuevo León (Monterrey)</option>
+                <option value="UAU-A6">UAU (A6) - Querétaro</option>
+                <option value="UAU-A5">UAU (A5) - Puebla</option>
+              </select>
+              <p class="text-[11px] text-slate-400">
+                💡 Consejo: Si resides en CDMX o área metropolitana, la UAU Central tramita los asuntos de Banca Múltiple y Casas de Bolsa de forma prioritaria.
+              </p>
+            </div>
+
+            <!-- Ficha dinámica de la UAU -->
+            <div id="uau-info-box" class="md:col-span-2 bg-slate-900/80 rounded-xl p-4 border border-cyan-500/20 flex gap-4">
+              <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <div class="text-xs space-y-1">
+                <h4 id="uau-title" class="font-bold text-white text-sm">Unidad de Atención Central (A1) - CDMX</h4>
+                <p id="uau-address" class="text-slate-300">Av. Insurgentes Sur No. 762, Col. Del Valle, Alcaldía Benito Juárez, C.P. 03100, Ciudad de México.</p>
+                <div class="flex flex-wrap gap-4 pt-1 font-mono text-[11px] text-cyan-400">
+                  <span>Tel: 55 5340 0999</span>
+                  <span>Horario: Lunes a Viernes 08:30 - 16:00 hrs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOQUE 3: DATOS DEL ASUNTO / ENTIDAD FINANCIERA -->
+        <div class="glass-panel rounded-2xl p-6">
+          <div class="flex items-center gap-3 border-b border-slate-800 pb-4 mb-6">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm">
+              3
+            </div>
+            <div>
+              <h3 class="text-base font-bold text-white">Datos de la Institución Financiera y Producto</h3>
+              <p class="text-xs text-slate-400">Especifica la entidad regulada contra la cual se interpone la reclamación.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Sector Financiero *</label>
+              <select id="fin-sector" onchange="autoFilterInstitutionsBySector()" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+                <option value="Instituciones de Banca Múltiple">Instituciones de Banca Múltiple</option>
+                <option value="Casas de Bolsa">Casas de Bolsa</option>
+                <option value="Sociedades Financieras Populares (SOFIPO)">SOFIPO (Financiera Popular)</option>
+                <option value="Instituciones de Seguros">Instituciones de Seguros</option>
+                <option value="Sociedades Financieras de Objeto Múltiple (SOFOM E.N.R.)">SOFOM E.N.R.</option>
+                <option value="Fondos de Inversión">Fondos y Operadoras de Inversión</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Nombre de la Institución Financiera *</label>
+              <input id="fin-nombre" type="text" required placeholder="Ej. BBVA México, S.A." class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Producto o Servicio Reclamado *</label>
+              <select id="fin-producto" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+                <option value="Cuenta de Ahorro / Cheques / Nómina">Cuenta de Ahorro / Cheques / Nómina</option>
+                <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+                <option value="Cuenta de Inversión Bursátil / Fondos">Cuenta de Inversión Bursátil / Fondos</option>
+                <option value="Crédito Personal o de Nómina">Crédito Personal o de Nómina</option>
+                <option value="Seguro de Vida / Gastos Médicos / Auto">Seguro de Vida / Gastos Médicos / Auto</option>
+                <option value="Banca por Internet / App Móvil">Banca por Internet / App Móvil</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Causa de la Reclamación *</label>
+              <select id="fin-causa" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+                <option value="Negativa a proporcionar información sobre rendimientos o saldos">Negativa a proporcionar información sobre rendimientos</option>
+                <option value="Consumos o transferencias no reconocidas (SPEI / Cargo indebido)">Consumos o transferencias no reconocidas</option>
+                <option value="Bloqueo o retención injustificada de fondos y cuentas">Bloqueo o retención injustificada de fondos</option>
+                <option value="Cobro no devengado de comisiones o intereses excesivos">Cobro indebido de comisiones o intereses</option>
+                <option value="Incumplimiento de términos contractuales">Incumplimiento de términos de contrato</option>
+                <option value="Suplantación de identidad para apertura de crédito no solicitado">Suplantación de identidad en crédito</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">No. de Cuenta / Contrato / Tarjeta *</label>
+              <input id="fin-contrato" type="text" required placeholder="Ej. 012180001234567890 o Folio Contrato" class="w-full bg-slate-900 border border-slate-700 text-white font-mono rounded-lg p-2.5 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Monto Total Reclamado ($ MXN) *</label>
+              <div class="relative">
+                <span class="absolute left-3 top-2.5 text-slate-400 text-xs">$</span>
+                <input id="fin-monto" type="number" step="0.01" required placeholder="45250.00" class="w-full bg-slate-900 border border-slate-700 text-white pl-7 pr-3 py-2.5 text-xs rounded-lg font-mono focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOQUE 4: HECHOS Y PRETENSIONES -->
+        <div class="glass-panel rounded-2xl p-6">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">
+                4
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-white">Hechos y Pretensiones Legales</h3>
+                <p class="text-xs text-slate-400">Redacta de forma clara, sucinta y cronológica los acontecimientos.</p>
+              </div>
+            </div>
+            
+            <!-- Plantillas de redacción jurídica -->
+            <div class="hidden sm:flex items-center gap-2">
+              <span class="text-xs text-slate-400">Plantillas rápidas:</span>
+              <button type="button" onclick="insertHechosTemplate('cargos')" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded text-[11px] border border-slate-700 transition">
+                Cargos no reconocidos
+              </button>
+              <button type="button" onclick="insertHechosTemplate('rendimientos')" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded text-[11px] border border-slate-700 transition">
+                Retención de Inversión
+              </button>
+              <button type="button" onclick="insertHechosTemplate('bloqueo')" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded text-[11px] border border-slate-700 transition">
+                Bloqueo de Cuenta
+              </button>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">
+                Pretensiones (¿Qué solicitas formalmente a la institución financiera?) *
+              </label>
+              <textarea 
+                id="complaint-pretensiones" 
+                rows="2" 
+                required 
+                placeholder="Ej. Solicito la restitución íntegra e inmediata de la cantidad de $45,250.00 MXN indebidamente debitada de mi cuenta, así como la cancelación de cualquier cargo moratorio generado injustificadamente."
+                class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-3 text-xs leading-relaxed focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
+              ></textarea>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">
+                Hechos (Narración cronológica detallada con fechas, montos y folios) *
+              </label>
+              <textarea 
+                id="complaint-hechos" 
+                rows="6" 
+                required 
+                placeholder="PRIMERO.- Con fecha 12 de octubre de 2026, el suscrito aperturó la cuenta bancaria con la institución demandada...&#10;SEGUNDO.- El día 18 de octubre recibí una notificación de un cargo por la cantidad referida que en ningún momento autoricé ni validé mediante firma digital o token...&#10;TERCERO.- Levanté reporte ante la institución bajo el folio de aclaración #98721, recibiendo respuesta negativa improcedente..."
+                class="w-full bg-slate-900 border border-slate-700 text-white font-mono rounded-lg p-3 text-xs leading-relaxed focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Botón de Acción Principal -->
+          <div class="mt-6 pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2 text-xs text-slate-400">
+              <i data-lucide="info" class="w-4 h-4 text-cyan-400"></i>
+              <span>El documento resultante se apega a los lineamientos oficiales de la CONDUSEF.</span>
+            </div>
+
+            <button 
+              type="submit" 
+              class="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-cyan-500 hover:from-cyan-400 hover:to-blue-500 text-black font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 transition-all transform active:scale-95"
+            >
+              <i data-lucide="file-check" class="w-5 h-5"></i>
+              <span>Generar Formato de Queja (PDF Oficial)</span>
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 3: ANALIZADOR DE RIESGO CON IA       -->
+    <!-- ========================================== -->
+    <section id="view-analizador" class="tab-view hidden space-y-6">
+      
+      <!-- Encabezado y Radar Visual -->
+      <div class="glass-panel rounded-2xl p-6 sm:p-8">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div class="max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-medium mb-3">
+              <i data-lucide="brain-circuit" class="w-3.5 h-3.5"></i>
+              MOTOR FORENSE HEURÍSTICO
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+              Analizador de Fraudes con <span class="text-cyan-400">Inteligencia Artificial</span>
+            </h2>
+            <p class="text-slate-300 text-sm mt-2 leading-relaxed">
+              Pega mensajes sospechosos de WhatsApp, correos de phishing bancario, propuestas de inversión en redes sociales o enlaces de descarga. La IA detectará banderas rojas en segundos.
+            </p>
+
+            <!-- Botones de ejemplos rápidos -->
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="text-xs text-slate-400 self-center">Ejemplos típicos:</span>
+              <button onclick="loadSampleAnalysis('piramide')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs border border-slate-700 transition">
+                🔥 Rendimientos 30% Mensual
+              </button>
+              <button onclick="loadSampleAnalysis('suplantacion')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs border border-slate-700 transition">
+                🏦 SMS Banco Phishing
+              </button>
+              <button onclick="loadSampleAnalysis('montadeudas')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs border border-slate-700 transition">
+                📱 Préstamo Inmediato Sin Buró
+              </button>
+              <button onclick="loadSampleAnalysis('legitimo')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs border border-slate-700 transition">
+                ✅ Notificación Bancaria Legítima
+              </button>
+            </div>
+          </div>
+
+          <!-- Widget de Estado del Motor IA -->
+          <div class="bg-slate-900/90 border border-cyan-500/30 rounded-xl p-4 flex items-center gap-4 shrink-0">
+            <div class="relative w-12 h-12 flex items-center justify-center">
+              <div class="absolute inset-0 rounded-full border-2 border-cyan-500/20 border-t-cyan-400 animate-spin"></div>
+              <i data-lucide="cpu" class="w-6 h-6 text-cyan-400"></i>
+            </div>
+            <div>
+              <div class="text-xs font-mono text-cyan-400 font-bold">MODELO CIBER-FINTECH V2.6</div>
+              <div class="text-[11px] text-slate-400">Heurísticas CONDUSEF / CNBV Activas</div>
+              <div class="text-[10px] text-emerald-400 flex items-center gap-1 mt-0.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> 99.4% Precisión en Phishing MX
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cuadro de Entrada y Botón de Análisis -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Columna de Entrada (7 cols) -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="glass-panel rounded-2xl p-6">
+            <label class="block text-xs font-bold text-white mb-2 flex items-center justify-between">
+              <span>Texto del Mensaje, Correo o Publicación Sospechosa:</span>
+              <button onclick="clearAIText()" class="text-slate-400 hover:text-white text-xs font-normal">Limpiar</button>
+            </label>
+            <textarea 
+              id="ai-input-text" 
+              rows="7" 
+              placeholder="Pega aquí el contenido que te enviaron por WhatsApp, Telegram, correo electrónico o redes sociales. Ejemplo: 'Hola amigo, invierte en la nueva plataforma de PEMEX con IA y gana 15,000 pesos semanales garantizados sin riesgo...'"
+              class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs sm:text-sm font-mono leading-relaxed focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition"
+            ></textarea>
+
+            <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <div class="text-[11px] text-slate-400">
+                🔒 El texto se procesa de forma confidencial sin almacenar tus datos personales.
+              </div>
+              <button 
+                id="btn-scan-ai" 
+                onclick="runAIAnalysis()" 
+                class="w-full sm:w-auto px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-extrabold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20 transition active:scale-95"
+              >
+                <i data-lucide="zap" class="w-4 h-4"></i>
+                <span>Escanear con IA Heurística</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Radar Animado mientras analiza (oculto por defecto) -->
+          <div id="ai-scanning-state" class="hidden glass-panel rounded-2xl p-8 text-center">
+            <div class="relative w-20 h-20 mx-auto mb-4">
+              <div class="absolute inset-0 rounded-full border-2 border-cyan-500/30"></div>
+              <div class="absolute inset-0 rounded-full border-2 border-transparent border-t-cyan-400 animate-spin"></div>
+              <div class="absolute inset-3 rounded-full border border-blue-400/40 animate-ping"></div>
+              <i data-lucide="radar" class="w-8 h-8 text-cyan-400 absolute inset-0 m-auto"></i>
+            </div>
+            <h4 class="text-sm font-bold text-white font-mono">DESCOMPONIENDO PATRONES SINTÁCTICOS...</h4>
+            <p class="text-xs text-slate-400 mt-1">Cruzando con bases de datos de números denunciados y dominios apócrifos.</p>
+          </div>
+        </div>
+
+        <!-- Columna de Resultados y Termómetro (5 cols) -->
+        <div class="lg:col-span-5">
+          <div id="ai-results-panel" class="glass-panel rounded-2xl p-6 h-full flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                <span class="text-xs font-bold text-slate-300">DIAGNÓSTICO FORENSE</span>
+                <span id="ai-risk-tag" class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-slate-800 text-slate-400">
+                  Esperando entrada...
+                </span>
+              </div>
+
+              <!-- Termómetro Visual de Riesgo -->
+              <div class="text-center py-4">
+                <div class="text-xs text-slate-400 mb-1">ÍNDICE DE RIESGO ESTIMADO</div>
+                <div id="ai-risk-score" class="text-5xl font-extrabold text-slate-500 font-mono tracking-tight">
+                  --%
+                </div>
+                <div id="ai-risk-label" class="text-xs font-bold uppercase tracking-wider text-slate-400 mt-1">
+                  Sin análisis previo
+                </div>
+
+                <!-- Barra de Progreso del Termómetro -->
+                <div class="w-full bg-slate-800 h-3 rounded-full mt-4 overflow-hidden p-0.5 border border-slate-700">
+                  <div id="ai-risk-bar" class="h-full rounded-full bg-slate-600 transition-all duration-700 w-0"></div>
+                </div>
+                <div class="flex justify-between text-[10px] text-slate-500 font-mono mt-1 px-1">
+                  <span>0% Seguro</span>
+                  <span>50% Precaución</span>
+                  <span>100% Fraude Crítico</span>
+                </div>
+              </div>
+
+              <!-- Banderas Rojas Detectadas -->
+              <div class="mt-4 space-y-2">
+                <div class="text-xs font-semibold text-slate-300">Banderas Rojas (Red Flags):</div>
+                <div id="ai-flags-container" class="space-y-2 text-xs">
+                  <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800 text-slate-400 text-xs">
+                    Introduce un mensaje sospechoso en la caja de texto para ver el desglose automatizado de riesgos.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recomendación de Ciberseguridad -->
+            <div id="ai-recommendation-box" class="mt-6 pt-4 border-t border-slate-800 text-xs text-slate-400">
+              <strong class="text-white block mb-1">Recomendación Inicial:</strong>
+              No proporciones claves bancarias ni realices transferencias electrónicas a personas físicas si la oferta se prometió por redes sociales.
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 4: RADAR DE ALERTAS Y REPORTE        -->
+    <!-- ========================================== -->
+    <section id="view-radar" class="tab-view hidden space-y-6">
+      
+      <!-- Panel de Estadísticas en Vivo -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="glass-panel rounded-2xl p-4 sm:p-5">
+          <div class="flex items-center justify-between text-slate-400 mb-2">
+            <span class="text-xs font-semibold">Reportes Hoy</span>
+            <i data-lucide="bell" class="w-4 h-4 text-cyan-400"></i>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono" id="stat-reports-today">142</div>
+          <span class="text-[11px] text-emerald-400 flex items-center gap-1 mt-1">
+            <i data-lucide="trending-up" class="w-3 h-3"></i> +18% actividad ciudadana
+          </span>
+        </div>
+
+        <div class="glass-panel rounded-2xl p-4 sm:p-5">
+          <div class="flex items-center justify-between text-slate-400 mb-2">
+            <span class="text-xs font-semibold">Alertas Críticas</span>
+            <i data-lucide="shield-alert" class="w-4 h-4 text-red-400"></i>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-red-400 font-mono" id="stat-critical-alerts">28</div>
+          <span class="text-[11px] text-red-300">Suplantación bancaria activa</span>
+        </div>
+
+        <div class="glass-panel rounded-2xl p-4 sm:p-5">
+          <div class="flex items-center justify-between text-slate-400 mb-2">
+            <span class="text-xs font-semibold">Entidades Verificadas</span>
+            <i data-lucide="badge-check" class="w-4 h-4 text-emerald-400"></i>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">5,214</div>
+          <span class="text-[11px] text-slate-400">Padrón SIPRES regulado</span>
+        </div>
+
+        <div class="glass-panel rounded-2xl p-4 sm:p-5">
+          <div class="flex items-center justify-between text-slate-400 mb-2">
+            <span class="text-xs font-semibold">Monto Evitado</span>
+            <i data-lucide="lock" class="w-4 h-4 text-cyan-400"></i>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono">$18.4M</div>
+          <span class="text-[11px] text-slate-400">Estimado en fraudes frenados</span>
+        </div>
+      </div>
+
+      <!-- Feed de Alertas en Vivo y Acción de Reportar -->
+      <div class="glass-panel rounded-2xl p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4 mb-6">
+          <div>
+            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+              Radar Comunitario de Fraudes en Vivo (México)
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">
+              Alertas generadas por usuarios y validadas contra bases de datos de la Policía Cibernética y CONDUSEF.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="openModalReporte()" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs flex items-center gap-2 shadow-lg shadow-red-600/30 transition active:scale-95">
+              <i data-lucide="plus-circle" class="w-4 h-4"></i>
+              <span>Nuevo Reporte</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filtros del Radar -->
+        <div class="flex flex-wrap gap-2 mb-6 text-xs">
+          <button onclick="filterRadar('all')" id="rf-all" class="radar-filter px-3 py-1.5 rounded-lg bg-cyan-600 text-white font-semibold">
+            Todas las alertas
+          </button>
+          <button onclick="filterRadar('suplantacion')" id="rf-suplantacion" class="radar-filter px-3 py-1.5 rounded-lg bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-700">
+            Suplantación / Clones
+          </button>
+          <button onclick="filterRadar('piramide')" id="rf-piramide" class="radar-filter px-3 py-1.5 rounded-lg bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-700">
+            Esquemas Piramidales
+          </button>
+          <button onclick="filterRadar('montadeudas')" id="rf-montadeudas" class="radar-filter px-3 py-1.5 rounded-lg bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-700">
+            Apps Montadeudas
+          </button>
+        </div>
+
+        <!-- Contenedor del Feed de Alertas -->
+        <div id="radar-feed-list" class="space-y-4">
+          <!-- Elementos inyectados dinámicamente -->
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- MODALES DE LA APLICACIÓN                                 -->
+  <!-- ======================================================== -->
+
+  <!-- MODAL 1: FICHA TÉCNICA SIPRES DE INSTITUCIÓN -->
+  <div id="modal-sipres-detail" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="glass-panel w-full sm:max-w-2xl sm:rounded-2xl rounded-t-2xl max-h-[90vh] overflow-y-auto border border-cyan-500/30 shadow-2xl transition-all">
+      
+      <!-- Encabezado del modal -->
+      <div class="p-6 border-b border-slate-800 flex items-start justify-between relative">
+        <div class="flex items-center gap-3">
+          <div id="modal-sipres-icon" class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0 border border-cyan-500/20">
+            <i data-lucide="building" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span id="modal-sipres-status" class="text-[11px] font-mono px-2 py-0.5 rounded-full font-bold">STATUS</span>
+              <span id="modal-sipres-sector" class="text-xs text-slate-400 font-mono">SECTOR</span>
+            </div>
+            <h3 id="modal-sipres-name" class="text-lg sm:text-xl font-bold text-white mt-1">Nombre de la Entidad</h3>
+          </div>
+        </div>
+        <button onclick="closeModalSipres()" class="text-slate-400 hover:text-white p-2 rounded-lg bg-slate-800/80 transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Cuerpo del modal con datos fiscales y de ciberdefensa -->
+      <div class="p-6 space-y-6">
+        
+        <!-- Alerta de advertencia si es fraudulenta o clonada -->
+        <div id="modal-sipres-alert-box" class="hidden p-4 rounded-xl border">
+          <!-- Inyectado dinámicamente -->
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+          <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+            <span class="text-slate-400 block mb-1">Razón Social Oficial</span>
+            <span id="modal-sipres-razon" class="font-semibold text-white">--</span>
+          </div>
+
+          <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+            <span class="text-slate-400 block mb-1">Folio SIPRES (CONDUSEF)</span>
+            <span id="modal-sipres-folio" class="font-mono font-bold text-cyan-400">--</span>
+          </div>
+
+          <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+            <span class="text-slate-400 block mb-1">Registro Federal de Contribuyentes (RFC)</span>
+            <span id="modal-sipres-rfc" class="font-mono text-white">--</span>
+          </div>
+
+          <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+            <span class="text-slate-400 block mb-1">Supervisión Regulatoria</span>
+            <span id="modal-sipres-supervision" class="text-emerald-400 font-semibold">CNBV / BANXICO / SHCP</span>
+          </div>
+
+          <div class="sm:col-span-2 bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+            <span class="text-slate-400 block mb-1">Domicilio Fiscal Registrado</span>
+            <span id="modal-sipres-domicilio" class="text-slate-200">--</span>
+          </div>
+
+          <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+            <span class="text-slate-400 block mb-1">Teléfono de Atención Ciudadana</span>
+            <span id="modal-sipres-telefono" class="font-mono text-cyan-300">--</span>
+          </div>
+
+          <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+            <span class="text-slate-400 block mb-1">Portal Oficial Verificado</span>
+            <a id="modal-sipres-web" href="#" target="_blank" class="text-cyan-400 underline flex items-center gap-1 hover:text-cyan-300">
+              <span>Visitar sitio oficial</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Recomendaciones de Ciberseguridad específicas -->
+        <div class="bg-cyan-950/30 border border-cyan-500/20 rounded-xl p-4 text-xs space-y-2">
+          <div class="font-bold text-cyan-300 flex items-center gap-2">
+            <i data-lucide="shield-alert" class="w-4 h-4"></i>
+            Protocolo de Verificación Segura
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            Si recibes llamadas solicitando claves de acceso o tokens, cuelga de inmediato. La institución financiera legítima jamás te pedirá contraseñas completas ni depósitos a cuentas CLABE de personas físicas.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Botones de pie de modal -->
+      <div class="p-6 border-t border-slate-800 flex flex-col sm:flex-row gap-3 justify-end">
+        <button onclick="closeModalSipres()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition">
+          Cerrar
+        </button>
+        <button id="modal-sipres-btn-queja" onclick="iniciarQuejaDesdeSipres()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-extrabold text-xs flex items-center justify-center gap-2 transition active:scale-95">
+          <i data-lucide="file-text" class="w-4 h-4"></i>
+          <span>Presentar Queja sobre esta Entidad</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL 2: VISTA PREVIA Y FORMATO LEGAL CONDUSEF (LISTO PARA IMPRIMIR) -->
+  <div id="modal-legal-preview" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="glass-panel w-full sm:max-w-4xl sm:rounded-2xl rounded-t-2xl max-h-[92vh] flex flex-col border border-cyan-500/30 shadow-2xl">
+      
+      <!-- Barra superior no imprimible -->
+      <div class="p-4 sm:p-6 border-b border-slate-800 flex items-center justify-between no-print bg-[#0c1636]">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
+            <i data-lucide="file-check" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-white">Escrito Administrativo de Reclamación Formal</h3>
+            <p class="text-xs text-slate-400 font-mono">CONDUSEF - Art. 59 Bis 1 LPDUSF</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="window.print()" class="px-3.5 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs flex items-center gap-2 shadow-lg shadow-cyan-500/20 transition active:scale-95">
+            <i data-lucide="printer" class="w-4 h-4"></i>
+            <span>Imprimir / Guardar PDF</span>
+          </button>
+          <button onclick="copyLegalTextToClipboard()" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition" title="Copiar texto formal">
+            <i data-lucide="copy" class="w-4 h-4"></i>
+          </button>
+          <button onclick="closeLegalModal()" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Contenedor del Documento Legal Imprimible -->
+      <div class="p-6 sm:p-10 overflow-y-auto flex-1 bg-white text-gray-900 text-sm leading-relaxed" id="print-area">
+        
+        <!-- Encabezado Institucional -->
+        <div class="border-b-2 border-gray-900 pb-4 mb-6 text-center">
+          <div class="text-xs font-bold tracking-widest text-gray-600 uppercase font-sans">
+            GOBIERNO DE MÉXICO • SECRETARÍA DE HACIENDA Y CRÉDITO PÚBLICO
+          </div>
+          <h2 class="text-base sm:text-lg font-extrabold text-gray-900 font-legal mt-1">
+            COMISIÓN NACIONAL PARA LA PROTECCIÓN Y DEFENSA DE LOS USUARIOS DE SERVICIOS FINANCIEROS (CONDUSEF)
+          </h2>
+          <div id="legal-doc-uau-header" class="text-xs font-semibold text-gray-700 font-sans mt-0.5">
+            UNIDAD DE ATENCIÓN A USUARIOS: CENTRAL (A1)
+          </div>
+        </div>
+
+        <!-- Rubro Legal Formal -->
+        <div class="bg-gray-50 border border-gray-300 p-4 rounded mb-6 font-mono text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div><strong class="text-gray-800">QUEJOSO:</strong> <span id="legal-doc-rubro-quejoso">CARLOS EDUARDO MENDOZA SOTO</span></div>
+            <div><strong class="text-gray-800">EXPEDIENTE / FOLIO PROV:</strong> <span id="legal-doc-folio-hash">CND-2026-89412</span></div>
+            <div><strong class="text-gray-800">INSTITUCIÓN RECLAMADA:</strong> <span id="legal-doc-rubro-financiera">BBVA MÉXICO, S.A.</span></div>
+            <div><strong class="text-gray-800">FECHA DE RADICACIÓN:</strong> <span id="legal-doc-fecha">22 DE OCTUBRE DE 2026</span></div>
+          </div>
+        </div>
+
+        <!-- Proemio Legal -->
+        <div class="font-legal text-justify space-y-4 mb-6 text-[13px] leading-relaxed">
+          <p>
+            <strong>C. DELEGADO / TITULAR DE LA UNIDAD DE ATENCIÓN A USUARIOS DE LA CONDUSEF EN <span id="legal-doc-uau-city">CIUDAD DE MÉXICO</span>:</strong>
+          </p>
+          <p>
+            El(la) que suscribe, <strong id="legal-doc-proemio-nombre">CARLOS EDUARDO MENDOZA SOTO</strong>, por mi propio derecho, con Clave Única de Registro de Población (CURP) <strong id="legal-doc-proemio-curp">MESC890314HDFNR03</strong>, señalando como domicilio legal para oír y recibir toda clase de notificaciones, citaciones y documentos el ubicado en <span id="legal-doc-proemio-domicilio">Av. Insurgentes Sur 1450 Int 402, Col. Actipan, Alcaldía Benito Juárez, C.P. 03230, Ciudad de México</span>; con correo electrónico procesal <span id="legal-doc-proemio-email" class="underline">carlos.mendoza@email.com</span> y teléfono de contacto <span id="legal-doc-proemio-tel">5512345678</span>; comparezco con el debido respeto ante esta H. Comisión para exponer:
+          </p>
+          <p>
+            Que con fundamento en los artículos 1°, 6°, 8° y 17 de la Constitución Política de los Estados Unidos Mexicanos; artículos 1, 4, 11, 59 Bis 1, 60, 61, 62 y demás relativos aplicables de la <strong>Ley de Protección y Defensa al Usuario de Servicios Financieros</strong>, así como los correlativos de la Ley Federal de Procedimiento Administrativo de aplicación supletoria, vengo por medio del presente escrito a formular <strong>FORMAL RECLAMACIÓN Y PROCEDIMIENTO CONCILIATORIO</strong> en contra de la institución financiera <strong id="legal-doc-entidad-demandada">BBVA MÉXICO, S.A., INSTITUCIÓN DE BANCA MÚLTIPLE</strong>, respecto del contrato o número de cuenta <strong id="legal-doc-contrato">012180001234567890</strong> y producto <strong id="legal-doc-producto">CUENTA DE AHORRO / CHEQUES</strong>, sustentando mi dicho al tenor de las siguientes pretensiones y hechos:
+          </p>
+        </div>
+
+        <!-- Capítulo: Pretensiones -->
+        <div class="mb-6 font-legal">
+          <h4 class="font-bold text-sm tracking-wider uppercase border-b border-gray-400 pb-1 mb-3 text-gray-900">
+            I. PRETENSIONES
+          </h4>
+          <div id="legal-doc-body-pretensiones" class="text-justify text-[13px] leading-relaxed pl-4 border-l-2 border-gray-300 italic">
+            <!-- Inyectado dinámicamente -->
+          </div>
+        </div>
+
+        <!-- Capítulo: Hechos -->
+        <div class="mb-6 font-legal">
+          <h4 class="font-bold text-sm tracking-wider uppercase border-b border-gray-400 pb-1 mb-3 text-gray-900">
+            II. HECHOS
+          </h4>
+          <div id="legal-doc-body-hechos" class="text-justify text-[13px] leading-relaxed space-y-2 whitespace-pre-line pl-4 border-l-2 border-gray-300">
+            <!-- Inyectado dinámicamente -->
+          </div>
+        </div>
+
+        <!-- Capítulo: Petitorios -->
+        <div class="mb-10 font-legal text-justify text-[13px] leading-relaxed">
+          <h4 class="font-bold text-sm tracking-wider uppercase border-b border-gray-400 pb-1 mb-3 text-gray-900">
+            III. PETITORIOS
+          </h4>
+          <p class="mb-2">Por lo anteriormente expuesto y fundado, a esta H. COMISIÓN respetuosamente solicito:</p>
+          <ol class="list-decimal pl-6 space-y-1">
+            <li><strong>PRIMERO:</strong> Tenerme por presentado con este escrito en tiempo y forma, reconociendo la personalidad con la que comparezco.</li>
+            <li><strong>SEGUNDO:</strong> Dar trámite a la presente reclamación corriendo traslado a la institución financiera señalada para que emita su informe de ley en el plazo legal perentorio.</li>
+            <li><strong>TERCERO:</strong> Señalar día y hora para la celebración de la audiencia de conciliación conforme al Art. 68 de la Ley de Protección y Defensa al Usuario de Servicios Financieros.</li>
+            <li><strong>CUARTO:</strong> En caso de negativa o rebeldía de la institución, emitir el correspondiente Dictamen Técnico con fuerza de título ejecutivo.</li>
+          </ol>
+        </div>
+
+        <!-- Espacio de Firma y Validación de Autenticidad -->
+        <div class="mt-12 pt-6 border-t border-gray-300">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-8 text-center">
+            
+            <div class="w-64 mx-auto sm:mx-0">
+              <div class="h-16 border-b border-gray-800 mb-2"></div>
+              <div class="text-xs font-bold text-gray-900 uppercase" id="legal-doc-firma-nombre">CARLOS EDUARDO MENDOZA SOTO</div>
+              <div class="text-[10px] text-gray-500">FIRMA AUTÓGRAFA DEL RECLAMANTE</div>
+            </div>
+
+            <div class="text-left font-mono text-[10px] text-gray-600 bg-gray-100 p-3 rounded border border-gray-300 max-w-sm">
+              <div class="font-bold text-gray-800 mb-1 flex items-center gap-1">
+                <span>SELLO DIGITAL DE INTEGRIDAD CRIPTOGRÁFICA</span>
+              </div>
+              <div>HASH SHA-256: <span id="legal-doc-sha256" class="break-all">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span></div>
+              <div class="mt-1">GENERADO: <span id="legal-doc-timestamp">2026-10-22 05:43:22 CST</span> • ESCUDO PRO ENGINE</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Pie de página del modal con acciones no imprimibles -->
+      <div class="p-4 border-t border-slate-800 bg-[#0c1636] flex justify-between items-center no-print">
+        <span class="text-xs text-slate-400">💡 Tip: Pulsa <strong>Imprimir / Guardar PDF</strong> y selecciona "Guardar como PDF" en tu navegador.</span>
+        <button onclick="closeLegalModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-xs font-semibold transition">
+          Cerrar Vista Previa
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL 3: REPORTE CIUDADANO DE FRAUDE / PLATAFORMA FALSA -->
+  <div id="modal-reporte" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="glass-panel w-full sm:max-w-xl sm:rounded-2xl rounded-t-2xl max-h-[90vh] overflow-y-auto border border-red-500/30 shadow-2xl">
+      
+      <div class="p-6 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-red-500/20 text-red-400 flex items-center justify-center">
+            <i data-lucide="alert-octagon" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-white">Reportar Plataforma o Fraude Financiero</h3>
+            <p class="text-xs text-slate-400">Tu reporte alerta a toda la comunidad e inicia el escaneo forense.</p>
+          </div>
+        </div>
+        <button onclick="closeModalReporte()" class="text-slate-400 hover:text-white p-2 rounded-lg bg-slate-800 transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <form id="report-form" onsubmit="event.preventDefault(); submitCommunityReport();" class="p-6 space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1">Nombre de la App, Empresa o Plataforma Sospechosa *</label>
+          <input id="rep-name" type="text" required placeholder="Ej. Préstamos Inmediatos Flash / InverPro App" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 focus:border-red-500 focus:ring-1 focus:ring-red-500">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-semibold text-slate-300 mb-1">Tipo de Modus Operandi *</label>
+            <select id="rep-category" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 focus:border-red-500 focus:ring-1 focus:ring-red-500">
+              <option value="suplantacion">Suplantación de Institución Regulada</option>
+              <option value="piramide">Esquema Piramidal / Inversión Falsa</option>
+              <option value="montadeudas">App Montadeudas / Extorsión</option>
+              <option value="phishing">Phishing Bancario (SMS/Web)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block font-semibold text-slate-300 mb-1">Canal de Contacto Usado *</label>
+            <select id="rep-channel" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 focus:border-red-500 focus:ring-1 focus:ring-red-500">
+              <option value="WhatsApp">WhatsApp / Telegram</option>
+              <option value="Facebook / Instagram">Facebook / Instagram Ads</option>
+              <option value="Llamada Telefónica">Llamada Telefónica / Vishing</option>
+              <option value="SMS">Mensaje SMS con enlace</option>
+              <option value="Play Store / APK">Google Play Store / Archivo APK</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1">Enlace Web, Teléfono o Perfil Sospechoso</label>
+          <input id="rep-url" type="text" placeholder="https://... o +52 55..." class="w-full bg-slate-900 border border-slate-700 text-white font-mono rounded-lg p-2.5 focus:border-red-500 focus:ring-1 focus:ring-red-500">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1">Descripción del Engaño / Modus Operandi *</label>
+          <textarea id="rep-desc" rows="3" required placeholder="Describe qué prometieron, si pidieron depósitos previos o si amenazan con llamadas..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 leading-relaxed focus:border-red-500 focus:ring-1 focus:ring-red-500"></textarea>
+        </div>
+
+        <div class="bg-red-950/40 border border-red-500/20 p-3 rounded-lg text-slate-300 text-[11px] flex gap-2">
+          <i data-lucide="shield-alert" class="w-4 h-4 text-red-400 shrink-0 mt-0.5"></i>
+          <span>Los reportes ciudadanos se analizan automáticamente y se sincronizan con las estadísticas del Radar Comunitario.</span>
+        </div>
+
+        <div class="pt-2 flex justify-end gap-3">
+          <button type="button" onclick="closeModalReporte()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
+            Cancelar
+          </button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold flex items-center gap-2 shadow-lg shadow-red-600/30 transition active:scale-95">
+            <i data-lucide="send" class="w-4 h-4"></i>
+            <span>Publicar Reporte de Alerta</span>
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- TOAST DE NOTIFICACIÓN FLOTANTE -->
+  <div id="toast-notification" class="fixed bottom-20 md:bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 glass-panel px-4 py-3 rounded-xl border border-cyan-500/40 shadow-2xl">
+    <div id="toast-icon-wrapper" class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">
+      <i data-lucide="check" class="w-4 h-4"></i>
+    </div>
+    <div class="text-xs">
+      <div id="toast-title" class="font-bold text-white">Notificación</div>
+      <div id="toast-message" class="text-slate-300 text-[11px]">Mensaje de confirmación</div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- BARRA DE NAVEGACIÓN INFERIOR (MÓVIL < 768px)             -->
+  <!-- ======================================================== -->
+  <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#070D1F]/95 backdrop-blur-xl border-t border-slate-800 px-2 py-1.5 flex justify-around items-center">
+    <button onclick="switchTab('sipres')" id="mob-tab-sipres" class="flex flex-col items-center py-1 px-3 text-cyan-400 transition">
+      <i data-lucide="building-2" class="w-5 h-5"></i>
+      <span class="text-[10px] font-semibold mt-0.5">SIPRES</span>
+    </button>
+    <button onclick="switchTab('queja')" id="mob-tab-queja" class="flex flex-col items-center py-1 px-3 text-slate-400 transition">
+      <i data-lucide="file-text" class="w-5 h-5"></i>
+      <span class="text-[10px] font-semibold mt-0.5">Queja</span>
+    </button>
+    <button onclick="switchTab('analizador')" id="mob-tab-analizador" class="flex flex-col items-center py-1 px-3 text-slate-400 transition">
+      <i data-lucide="cpu" class="w-5 h-5"></i>
+      <span class="text-[10px] font-semibold mt-0.5">IA Scan</span>
+    </button>
+    <button onclick="switchTab('radar')" id="mob-tab-radar" class="flex flex-col items-center py-1 px-3 text-slate-400 relative transition">
+      <i data-lucide="radar" class="w-5 h-5"></i>
+      <span class="text-[10px] font-semibold mt-0.5">Radar</span>
+      <span class="absolute top-1 right-2 w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+    </button>
+  </div>
+
+  <!-- FOOTER DESKTOP -->
+  <footer class="w-full bg-[#070D1F] border-t border-slate-900 py-6 text-xs text-slate-500 mt-12 pb-20 md:pb-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <i data-lucide="shield" class="w-4 h-4 text-cyan-500"></i>
+        <span>Escudo Financiero Pro • Sistema de Ciberdefensa Financiera & Verificación Ciudadana</span>
+      </div>
+      <div class="flex items-center gap-4 text-slate-400 font-mono text-[11px]">
+        <span>SIPRES API MOCK 2026</span>
+        <span>•</span>
+        <span>CONDUSEF COMPLIANT</span>
+        <span>•</span>
+        <button onclick="showSecurityAdviceToast()" class="text-cyan-400 hover:underline">Tips Ciberseguridad</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================== -->
+  <!-- JAVASCRIPT MODERNO (LÓGICA SPA AUTOCONTENIDA)            -->
+  <!-- ======================================================== -->
+  <script>
+    /**
+     * ESCUDO FINANCIERO PRO - ARCHITECTURE SCRIPT
+     * Implementa:
+     * 1. Data Store oficial y mock de instituciones SIPRES/CNBV.
+     * 2. Motor de búsqueda reactivo con filtros instantáneos.
+     * 3. Generador de quejas formales CONDUSEF con motor de vista previa imprimible.
+     * 4. Analizador heurístico de riesgo con IA para phishing y pirámides.
+     * 5. Radar comunitario con almacenamiento dinámico (localStorage).
+     * 6. Atajos de teclado (Ctrl + K, Escape) y diseño adaptativo.
+     */
+
+    // --- DATASET MOCK SIPRES / CNBV INTEGRADO ---
+    const INSTITUCIONES_MOCK = [
+      {
+        id: 1,
+        nombre: "BBVA México, S.A.",
+        razonSocial: "BBVA México, S.A., Institución de Banca Múltiple, Grupo Financiero BBVA México",
+        sector: "Instituciones de Banca Múltiple",
+        sectorKey: "banca",
+        rfc: "BBM930622B94",
+        folioSipres: "12048",
+        estatus: "Autorizada",
+        seguridadScore: 98,
+        domicilio: "Av. Paseo de la Reforma 510, Col. Juárez, Alcaldía Cuauhtémoc, C.P. 06600, CDMX",
+        telefono: "55 5226 2663",
+        web: "https://www.bbva.mx",
+        alerta: null,
+        descripcion: "Institución de Banca Múltiple autorizada por la CNBV, con seguro de depósito IPAB hasta por 400,000 UDIS."
+      },
+      {
+        id: 2,
+        nombre: "GBM Grupo Bursátil Mexicano",
+        razonSocial: "GBM Grupo Bursátil Mexicano, S.A. de C.V., Casa de Bolsa",
+        sector: "Casas de Bolsa",
+        sectorKey: "bolsa",
+        rfc: "GBM850610H38",
+        folioSipres: "40012",
+        estatus: "Autorizada",
+        seguridadScore: 97,
+        domicilio: "Av. Insurgentes Sur 1605, Piso 31, Col. San José Insurgentes, CDMX",
+        telefono: "55 5480 5800",
+        web: "https://gbm.com",
+        alerta: null,
+        descripcion: "Casa de Bolsa regulada por la CNBV e integrante del Sistema Bursátil Mexicano con custodia en INDEVAL."
+      },
+      {
+        id: 3,
+        nombre: "Kubo Financiero SFP",
+        razonSocial: "Kubo Financiero, S.A.P.I. de C.V., S.F.P.",
+        sector: "Sociedades Financieras Populares (SOFIPO)",
+        sectorKey: "sofipo",
+        rfc: "KFI1108048A1",
+        folioSipres: "50291",
+        estatus: "Autorizada",
+        seguridadScore: 94,
+        domicilio: "Barranca del Muerto 212, Col. Guadalupe Inn, Alcaldía Álvaro Obregón, CDMX",
+        telefono: "55 6845 0000",
+        web: "https://www.kubofinanciero.com",
+        alerta: null,
+        descripcion: "Sociedad Financiera Popular autorizada y supervisada por la CNBV. Fondo de protección Prosofipo hasta por 25,000 UDIS."
+      },
+      {
+        id: 4,
+        nombre: 'Kubo Préstamos Inmediatos / "Kubo Inversiones App"',
+        razonSocial: "Clonación Ilegal - Entidad No Regulada / Suplantación Activa",
+        sector: "Suplantación de Identidad / Phishing",
+        sectorKey: "alerta",
+        rfc: "APOCRIFO999",
+        folioSipres: "SIN REGISTRO (SUPLANTADOR)",
+        estatus: "Alerta de Suplantación",
+        seguridadScore: 5,
+        domicilio: "Domicilio Falso / Operación Remota no localizada",
+        telefono: "+52 55 (WhatsApp no oficial)",
+        web: "https://kubo-prestamos-rapidos.xyz (FALSO)",
+        alerta: {
+          tipo: "SUPLANTACIÓN ACTIVA",
+          severidad: "CRÍTICA",
+          detalle: "Utilizan el logotipo y nombre de Kubo Financiero para ofrecer créditos 'sin consultar buró' exigiendo un anticipo del 10% por concepto de 'seguro de liberación'."
+        },
+        descripcion: "ALERTA CONDUSEF: Esta entidad suplanta la identidad de una SOFIPO legal. No entregues dinero previo ni compartas datos biométricos."
+      },
+      {
+        id: 5,
+        nombre: "Actinver Casa de Bolsa",
+        razonSocial: "Corporación Actinver, S.A.B. de C.V.",
+        sector: "Casas de Bolsa",
+        sectorKey: "bolsa",
+        rfc: "ACB9403076G5",
+        folioSipres: "40003",
+        estatus: "Autorizada",
+        seguridadScore: 96,
+        domicilio: "Montes Urales 620, Lomas de Chapultepec, Miguel Hidalgo, CDMX",
+        telefono: "55 1103 6699",
+        web: "https://actinver.com",
+        alerta: null,
+        descripcion: "Grupo financiero bursátil regulado por la CNBV y CONDUSEF para gestión de patrimonios y fondos de inversión indexados."
+      },
+      {
+        id: 6,
+        nombre: "Smart Business Corp / InverCapital Fake",
+        razonSocial: "Inversiones Inteligentes No Reguladas / Sin Personalidad CNBV",
+        sector: "Esquema Piramidal Ponzi",
+        sectorKey: "fraude",
+        rfc: "INEXISTENTE",
+        folioSipres: "NO CUENTA CON REGISTRO",
+        estatus: "Fraude No Regulado",
+        seguridadScore: 2,
+        domicilio: "Oficinas virtuales sin acreditación ante autoridades financieras",
+        telefono: "Sólo canales de mensajería Telegram",
+        web: "https://smart-business-invest.org",
+        alerta: {
+          tipo: "CAPTACIÓN ILEGAL",
+          severidad: "CRÍTICA",
+          detalle: "Prohibida por la CNBV. Promete rendimientos fijos superiores al 25% mensual mediante paquetes educativos y reclutamiento obligatorio de referidos."
+        },
+        descripcion: "La CNBV emitió comunicado oficial advirtiendo que esta empresa NO es una entidad financiera y carece de facultades para captar dinero del público."
+      },
+      {
+        id: 7,
+        nombre: "Nu México Financiera SFP",
+        razonSocial: "Nu México Financiera, S.A. de C.V., S.F.P.",
+        sector: "Sociedades Financieras Populares (SOFIPO)",
+        sectorKey: "sofipo",
+        rfc: "NMF2003184J2",
+        folioSipres: "50411",
+        estatus: "Autorizada",
+        seguridadScore: 95,
+        domicilio: "Av. Lago Alberto 319, Granada, Miguel Hidalgo, CDMX",
+        telefono: "800 099 1133",
+        web: "https://nu.com.mx",
+        alerta: null,
+        descripcion: "SOFIPO regulada por la CNBV con operaciones 100% digitales y protección de ahorros vía Fondo de Protección Prosofipo."
+      },
+      {
+        id: 8,
+        nombre: 'Préstamo Fácil MX / "Montadeudas Express"',
+        razonSocial: "Red de Apps Extorsivas no reguladas",
+        sector: "Apps Montadeudas / Fraude",
+        sectorKey: "fraude",
+        rfc: "NO APLICA",
+        folioSipres: "ILEGAL",
+        estatus: "Fraude No Regulado",
+        seguridadScore: 0,
+        domicilio: "Sin registro en la República Mexicana",
+        telefono: "Llamadas de cobranza intimidatoria",
+        web: "Descarga de archivos APK fuera de tiendas oficiales",
+        alerta: {
+          tipo: "EXTORSIÓN Y ROBO DE DATOS",
+          severidad: "CRÍTICA",
+          detalle: "Solicitan acceso a la libreta de contactos, galería fotográfica y ubicación para extorsionar a familiares exigiendo intereses abusivos."
+        },
+        descripcion: "Denunciada penalmente ante la Fiscalía General de Justicia y en la lista negra de la Policía Cibernética."
+      }
+    ];
+
+    // --- BASE DE DATOS DE UNIDADES DE ATENCIÓN A USUARIOS (UAU) ---
+    const UAU_DATA = {
+      "UAU-A1": {
+        name: "Unidad de Atención Central (A1) - CDMX",
+        address: "Av. Insurgentes Sur No. 762, Col. Del Valle, Alcaldía Benito Juárez, C.P. 03100, Ciudad de México.",
+        tel: "55 5340 0999",
+        city: "CIUDAD DE MÉXICO"
+      },
+      "UAU-A4": {
+        name: "Unidad de Atención Regional (A4) - Estado de México",
+        address: "Av. Mario Colín No. 9, Centro Industrial Tlalnepantla, C.P. 54030, Tlalnepantla de Baz, Edo. Méx.",
+        tel: "55 5340 0999 Ext 4010",
+        city: "ESTADO DE MÉXICO"
+      },
+      "UAU-A2": {
+        name: "Unidad de Atención Regional (A2) - Jalisco",
+        address: "Calle Garibaldi No. 1255, Col. Mezquitán Country, C.P. 44260, Guadalajara, Jalisco.",
+        tel: "33 3615 5790",
+        city: "GUADALAJARA, JALISCO"
+      },
+      "UAU-A3": {
+        name: "Unidad de Atención Regional (A3) - Nuevo León",
+        address: "Av. Cuauhtémoc No. 727 Nte., Col. Centro, C.P. 64000, Monterrey, Nuevo León.",
+        tel: "81 8340 8590",
+        city: "MONTERREY, NUEVO LEÓN"
+      },
+      "UAU-A6": {
+        name: "Unidad de Atención Regional (A6) - Querétaro",
+        address: "Boulevard Bernardo Quintana No. 546, Col. Arboledas, C.P. 76140, Santiago de Querétaro, Qro.",
+        tel: "442 216 4500",
+        city: "QUERÉTARO"
+      },
+      "UAU-A5": {
+        name: "Unidad de Atención Regional (A5) - Puebla",
+        address: "Av. 15 de Mayo No. 2929, Col. Las Hadas, C.P. 72070, Puebla, Pue.",
+        tel: "222 249 7800",
+        city: "PUEBLA"
+      }
+    };
+
+    // --- FEED INICIAL DEL RADAR COMUNITARIO ---
+    let communityReports = [
+      {
+        id: "rep-101",
+        nombre: "Kubo Préstamos WhatsApp Fake",
+        categoria: "suplantacion",
+        canal: "WhatsApp",
+        url: "+52 55 9214 8831",
+        descripcion: "Me enviaron contrato apócrifo con logotipos de CONDUSEF pidiendo depósito de $3,500 para liberar crédito de $50,000.",
+        fecha: "Hace 12 minutos",
+        confirmaciones: 43
+      },
+      {
+        id: "rep-102",
+        nombre: "InverSmart Crypto Bot MX",
+        categoria: "piramide",
+        canal: "Facebook / Instagram Ads",
+        url: "https://inversmart-ia.top",
+        descripcion: "Prometen rendimiento fijo garantizado del 2% diario usando 'algoritmos de inteligencia artificial'. Retención de depósitos al querer retirar.",
+        fecha: "Hace 45 minutos",
+        confirmaciones: 89
+      },
+      {
+        id: "rep-103",
+        nombre: "App Préstamo Relámpago",
+        categoria: "montadeudas",
+        canal: "Google Play Store / APK",
+        url: "com.prestamo.relampago.mex",
+        descripcion: "Instalaron la app y a los 3 días comenzaron a extorsionar a mis contactos en WhatsApp amenazando con publicar fotografías personales.",
+        fecha: "Hace 2 horas",
+        confirmaciones: 112
+      },
+      {
+        id: "rep-104",
+        nombre: "Falso SMS Alerta BBVA / Desbloqueo",
+        categoria: "phishing",
+        canal: "SMS con enlace",
+        url: "http://bbva-seguridad-login.cc",
+        descripcion: "SMS falso diciendo: 'Su cuenta ha sido bloqueada por intento de acceso. Ingrese a http://... para desbloquear token'.",
+        fecha: "Hace 3 horas",
+        confirmaciones: 156
+      }
+    ];
+
+    // Variables de Estado de la Aplicación
+    let currentTab = 'sipres';
+    let currentFilter = 'all';
+    let selectedInstitutionForModal = null;
+
+    // --- INICIALIZACIÓN ---
+    document.addEventListener('DOMContentLoaded', () => {
+      // Cargar reportes guardados en localStorage si existen
+      const savedReports = localStorage.getItem('escudo_reports');
+      if (savedReports) {
+        try {
+          communityReports = JSON.parse(savedReports);
+        } catch (e) {
+          console.error("Error al cargar reportes guardados:", e);
+        }
+      }
+
+      // Renderizar vistas
+      renderInstitutionsGrid();
+      updateFilterCounters();
+      renderRadarFeed();
+      updateRadarStats();
+      lucide.createIcons();
+
+      // Atajos de teclado globales
+      window.addEventListener('keydown', (e) => {
+        // Ctrl + K o / para enfocar buscador
+        if ((e.ctrlKey && e.key.toLowerCase() === 'k') || (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA')) {
+          e.preventDefault();
+          focusGlobalSearch();
+        }
+        // Escape para cerrar modales o limpiar búsqueda
+        if (e.key === 'Escape') {
+          closeAllModals();
+        }
+      });
+    });
+
+    // ==========================================
+    // CONTROLADOR DE TABS Y NAVEGACIÓN
+    // ==========================================
+    function switchTab(tabId) {
+      currentTab = tabId;
+
+      // Ocultar todas las secciones
+      document.querySelectorAll('.tab-view').forEach(view => {
+        view.classList.add('hidden');
+      });
+
+      // Mostrar vista activa
+      const activeView = document.getElementById(`view-${tabId}`);
+      if (activeView) {
+        activeView.classList.remove('hidden');
+      }
+
+      // Actualizar botones de navegación desktop
+      document.querySelectorAll('.nav-tab').forEach(btn => {
+        btn.classList.remove('active-tab', 'text-cyan-400', 'bg-cyan-950/60', 'border', 'border-cyan-500/30', 'shadow-sm', 'shadow-cyan-500/20');
+        btn.classList.add('text-slate-400');
+      });
+
+      const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+      if (activeBtn) {
+        activeBtn.classList.add('active-tab', 'text-cyan-400', 'bg-cyan-950/60', 'border', 'border-cyan-500/30', 'shadow-sm', 'shadow-cyan-500/20');
+        activeBtn.classList.remove('text-slate-400');
+      }
+
+      // Actualizar navegación móvil
+      const mobTabs = ['sipres', 'queja', 'analizador', 'radar'];
+      mobTabs.forEach(id => {
+        const mobBtn = document.getElementById(`mob-tab-${id}`);
+        if (mobBtn) {
+          if (id === tabId) {
+            mobBtn.classList.add('text-cyan-400');
+            mobBtn.classList.remove('text-slate-400');
+          } else {
+            mobBtn.classList.remove('text-cyan-400');
+            mobBtn.classList.add('text-slate-400');
+          }
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      lucide.createIcons();
+    }
+
+    function focusGlobalSearch() {
+      switchTab('sipres');
+      setTimeout(() => {
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+          searchInput.focus();
+          searchInput.select();
+        }
+      }, 100);
+    }
+
+    // ==========================================
+    // MÓDULO 1: MOTOR DE BÚSQUEDA Y FILTRADO
+    // ==========================================
+    function renderInstitutionsGrid(query = '', filter = currentFilter) {
+      const container = document.getElementById('institutions-grid');
+      const noResults = document.getElementById('no-results-state');
+      const countText = document.getElementById('results-count-text');
+      
+      const cleanQuery = query.toLowerCase().trim();
+
+      const filtered = INSTITUCIONES_MOCK.filter(item => {
+        // Filtro por categoría rápida
+        if (filter === 'autorizada' && item.estatus !== 'Autorizada') return false;
+        if (filter === 'alerta' && item.estatus !== 'Alerta de Suplantación') return false;
+        if (filter === 'fraude' && item.estatus !== 'Fraude No Regulado') return false;
+
+        // Filtro por texto
+        if (!cleanQuery) return true;
+        return (
+          item.nombre.toLowerCase().includes(cleanQuery) ||
+          item.razonSocial.toLowerCase().includes(cleanQuery) ||
+          item.sector.toLowerCase().includes(cleanQuery) ||
+          item.rfc.toLowerCase().includes(cleanQuery) ||
+          item.folioSipres.toLowerCase().includes(cleanQuery)
+        );
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = '';
+        noResults.classList.remove('hidden');
+        countText.textContent = `0 entidades encontradas para "${query}"`;
+        return;
+      }
+
+      noResults.classList.add('hidden');
+      countText.textContent = `Mostrando ${filtered.length} institución(es) financiera(s)`;
+
+      container.innerHTML = filtered.map(inst => {
+        const isSafe = inst.estatus === 'Autorizada';
+        const isAlerta = inst.estatus === 'Alerta de Suplantación';
+        const isFraude = inst.estatus === 'Fraude No Regulado';
+
+        let badgeClass = "bg-emerald-500/10 text-emerald-400 border-emerald-500/30";
+        let statusDot = `<span class="w-2 h-2 rounded-full bg-emerald-400"></span>`;
+        let cardBorder = "border-slate-800 hover:border-cyan-500/40";
+
+        if (isAlerta) {
+          badgeClass = "bg-red-500/20 text-red-400 border-red-500/40";
+          statusDot = `<span class="w-2 h-2 rounded-full bg-red-400 animate-ping"></span>`;
+          cardBorder = "border-red-500/40 hover:border-red-500 bg-red-950/20";
+        } else if (isFraude) {
+          badgeClass = "bg-rose-500/20 text-rose-300 border-rose-500/40";
+          statusDot = `<span class="w-2 h-2 rounded-full bg-rose-500"></span>`;
+          cardBorder = "border-rose-500/40 hover:border-rose-400 bg-rose-950/20";
+        }
+
+        return `
+          <div class="glass-panel rounded-2xl p-5 border ${cardBorder} flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group">
+            <div>
+              <!-- Cabecera de la tarjeta -->
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-mono font-semibold border ${badgeClass}">
+                  ${statusDot}
+                  ${inst.estatus}
+                </span>
+                <span class="text-[11px] font-mono text-slate-400 bg-slate-900/90 px-2 py-0.5 rounded border border-slate-800">
+                  Folio: ${inst.folioSipres}
+                </span>
+              </div>
+
+              <!-- Nombre y sector -->
+              <h3 class="text-base font-bold text-white group-hover:text-cyan-300 transition line-clamp-1">
+                ${inst.nombre}
+              </h3>
+              <p class="text-xs text-slate-400 font-mono mt-0.5 line-clamp-1">
+                ${inst.sector}
+              </p>
+
+              <!-- Advertencia especial si es alerta -->
+              ${inst.alerta ? `
+                <div class="mt-3 p-2.5 rounded-lg bg-red-950/50 border border-red-500/40 text-[11px] text-red-300 flex items-start gap-2">
+                  <i data-lucide="alert-triangle" class="w-4 h-4 text-red-400 shrink-0 mt-0.5"></i>
+                  <div>
+                    <strong class="font-bold block">${inst.alerta.tipo}:</strong>
+                    ${inst.alerta.detalle}
+                  </div>
+                </div>
+              ` : `
+                <p class="text-xs text-slate-300 mt-2.5 line-clamp-2 leading-relaxed">
+                  ${inst.descripcion}
+                </p>
+              `}
+
+              <!-- Metadatos de RFC -->
+              <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                <span>RFC: <strong class="text-slate-200">${inst.rfc}</strong></span>
+                <span>Supervisión: <strong class="text-cyan-400">CNBV</strong></span>
+              </div>
+            </div>
+
+            <!-- Acciones de la Tarjeta -->
+            <div class="mt-5 pt-3 border-t border-slate-800/80 flex items-center gap-2">
+              <button onclick="openModalSipres(${inst.id})" class="flex-1 px-3 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center justify-center gap-1.5 border border-slate-700 transition">
+                <i data-lucide="eye" class="w-3.5 h-3.5 text-cyan-400"></i>
+                <span>Ver Ficha SIPRES</span>
+              </button>
+              <button onclick="prefillQuejaFromInstitution(${inst.id})" class="p-2 rounded-xl bg-cyan-950/60 hover:bg-cyan-900/80 text-cyan-300 border border-cyan-500/30 transition" title="Iniciar queja formal CONDUSEF">
+                <i data-lucide="file-plus" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    function handleSearch() {
+      const query = document.getElementById('search-input').value;
+      const clearBtn = document.getElementById('clear-search-btn');
+      
+      if (query.trim().length > 0) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+
+      renderInstitutionsGrid(query, currentFilter);
+    }
+
+    function clearSearch() {
+      const searchInput = document.getElementById('search-input');
+      searchInput.value = '';
+      document.getElementById('clear-search-btn').classList.add('hidden');
+      renderInstitutionsGrid('', currentFilter);
+      searchInput.focus();
+    }
+
+    function setFilter(filterType) {
+      currentFilter = filterType;
+
+      // Actualizar chips de filtro
+      document.querySelectorAll('.filter-chip').forEach(btn => {
+        btn.classList.remove('active-filter', 'bg-cyan-600', 'text-white', 'border-cyan-400');
+      });
+
+      const activeBtn = document.getElementById(`filter-btn-${filterType}`);
+      if (activeBtn) {
+        activeBtn.classList.add('active-filter', 'bg-cyan-600', 'text-white', 'border-cyan-400');
+      }
+
+      const query = document.getElementById('search-input').value;
+      renderInstitutionsGrid(query, currentFilter);
+    }
+
+    function updateFilterCounters() {
+      document.getElementById('count-all').textContent = INSTITUCIONES_MOCK.length;
+      document.getElementById('count-autorizada').textContent = INSTITUCIONES_MOCK.filter(i => i.estatus === 'Autorizada').length;
+      document.getElementById('count-alerta').textContent = INSTITUCIONES_MOCK.filter(i => i.estatus === 'Alerta de Suplantación').length;
+      document.getElementById('count-fraude').textContent = INSTITUCIONES_MOCK.filter(i => i.estatus === 'Fraude No Regulado').length;
+    }
+
+    // Modal de Detalle SIPRES
+    function openModalSipres(id) {
+      const inst = INSTITUCIONES_MOCK.find(i => i.id === id);
+      if (!inst) return;
+
+      selectedInstitutionForModal = inst;
+
+      document.getElementById('modal-sipres-name').textContent = inst.nombre;
+      document.getElementById('modal-sipres-razon').textContent = inst.razonSocial;
+      document.getElementById('modal-sipres-sector').textContent = inst.sector.toUpperCase();
+      document.getElementById('modal-sipres-folio').textContent = inst.folioSipres;
+      document.getElementById('modal-sipres-rfc').textContent = inst.rfc;
+      document.getElementById('modal-sipres-domicilio').textContent = inst.domicilio;
+      document.getElementById('modal-sipres-telefono').textContent = inst.telefono;
+      document.getElementById('modal-sipres-web').href = inst.web;
+
+      const statusEl = document.getElementById('modal-sipres-status');
+      statusEl.textContent = inst.estatus.toUpperCase();
+      
+      const alertBox = document.getElementById('modal-sipres-alert-box');
+      if (inst.alerta) {
+        alertBox.className = "p-4 rounded-xl border bg-red-950/60 border-red-500/50 text-red-200 text-xs block";
+        alertBox.innerHTML = `
+          <div class="flex items-center gap-2 font-bold text-red-400 text-sm mb-1">
+            <i data-lucide="alert-octagon" class="w-5 h-5"></i>
+            ${inst.alerta.tipo} - RIESGO MÁXIMO
+          </div>
+          <p class="leading-relaxed">${inst.alerta.detalle}</p>
+        `;
+      } else {
+        alertBox.className = "hidden";
+      }
+
+      document.getElementById('modal-sipres-detail').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeModalSipres() {
+      document.getElementById('modal-sipres-detail').classList.add('hidden');
+      selectedInstitutionForModal = null;
+    }
+
+    function iniciarQuejaDesdeSipres() {
+      if (!selectedInstitutionForModal) return;
+      const inst = selectedInstitutionForModal;
+      closeModalSipres();
+      prefillQuejaFromInstitution(inst.id);
+    }
+
+    function prefillQuejaFromInstitution(id) {
+      const inst = INSTITUCIONES_MOCK.find(i => i.id === id);
+      if (!inst) return;
+
+      switchTab('queja');
+      document.getElementById('fin-nombre').value = inst.nombre;
+      
+      // Ajustar selector de sector si coincide
+      const sectorSelect = document.getElementById('fin-sector');
+      for (let i = 0; i < sectorSelect.options.length; i++) {
+        if (sectorSelect.options[i].value === inst.sector) {
+          sectorSelect.selectedIndex = i;
+          break;
+        }
+      }
+
+      showToast("Entidad Cargada", `Se autocompletaron los datos de "${inst.nombre}" en la queja CONDUSEF.`);
+    }
+
+    // ==========================================
+    // MÓDULO 2: GENERADOR DE QUEJAS CONDUSEF
+    // ==========================================
+    function updateUAUDetails() {
+      const selectedKey = document.getElementById('uau-select').value;
+      const uau = UAU_DATA[selectedKey];
+      if (!uau) return;
+
+      document.getElementById('uau-title').textContent = uau.name;
+      document.getElementById('uau-address').textContent = uau.address;
+    }
+
+    function autoFilterInstitutionsBySector() {
+      // Ajuste visual según sector
+    }
+
+    function fillMockComplaintData() {
+      document.getElementById('user-tipo-persona').value = "Física";
+      document.getElementById('user-nombre').value = "Carlos Eduardo";
+      document.getElementById('user-paterno').value = "Mendoza";
+      document.getElementById('user-materno').value = "Soto";
+      document.getElementById('user-curp').value = "MESC890314HDFNR03";
+      document.getElementById('user-telefono').value = "5512345678";
+      document.getElementById('user-email').value = "carlos.mendoza.soto@gmail.com";
+      document.getElementById('user-calle').value = "Av. Insurgentes Sur 1450, Interior 402";
+      document.getElementById('user-colonia').value = "Actipan";
+      document.getElementById('user-municipio').value = "Benito Juárez";
+      document.getElementById('user-cp').value = "03230";
+      document.getElementById('user-estado').value = "Ciudad de México";
+
+      document.getElementById('uau-select').value = "UAU-A1";
+      updateUAUDetails();
+
+      document.getElementById('fin-sector').value = "Instituciones de Banca Múltiple";
+      document.getElementById('fin-nombre').value = "BBVA México, S.A.";
+      document.getElementById('fin-producto').value = "Cuenta de Ahorro / Cheques / Nómina";
+      document.getElementById('fin-causa').value = "Consumos o transferencias no reconocidas (SPEI / Cargo indebido)";
+      document.getElementById('fin-contrato').value = "012180001234567890";
+      document.getElementById('fin-monto').value = "45250.00";
+
+      document.getElementById('complaint-pretensiones').value = "Solicito la devolución íntegra e inmediata de la cantidad de $45,250.00 MXN debitada indebidamente de mi cuenta mediante transferencias electrónicas SPEI que no autoricé, así como la cancelación de cualquier cargo por sobregiro o comisión conexa derivada de dichos movimientos fraudulentos.";
+
+      document.getElementById('complaint-hechos').value = 
+`PRIMERO.- En fecha 15 de marzo de 2021, celebré contrato de apertura de cuenta de depósito a la vista con la institución BBVA México, asignándoseme el número de cuenta y CLABE 012180001234567890.
+
+SEGUNDO.- El pasado 14 de octubre de 2026, aproximadamente a las 11:42 horas, recibí notificaciones vía correo electrónico indicando la salida de tres transferencias SPEI por los montos de $15,000.00, $20,000.00 y $10,250.00 MXN a favor de destinatarios desconocidos.
+
+TERCERO.- Manifiesto bajo protesta de decir verdad que en ningún momento autoricé dichas operaciones, no ingresé a portales externos, no compartí mis claves dinámicas ni extravié mi dispositivo telefónico.
+
+CUARTO.- Me comuniqué a la línea de atención a clientes de BBVA levantando el folio de aclaración #987214-REC; no obstante, con fecha 19 de octubre de 2026 la institución emitió resolución desfavorable alegando sin sustento técnico que las operaciones fueron validadas mediante token móvil, omitiendo exhibir las direcciones IP y bitácoras forenses correspondientes.`;
+
+      showToast("Datos Demo Cargados", "Se rellenó el formulario con un caso real de reclamación bancaria.");
+    }
+
+    function insertHechosTemplate(type) {
+      const hechosText = document.getElementById('complaint-hechos');
+      const pretensionesText = document.getElementById('complaint-pretensiones');
+
+      if (type === 'cargos') {
+        pretensionesText.value = "Solicito el reembolso total del cargo no reconocido por la cantidad disputada, así como la exención de intereses moratorios e IVA generados indebidamente.";
+        hechosText.value = 
+`PRIMERO.- Soy titular del producto financiero con la entidad demandada bajo el contrato referido.
+SEGUNDO.- Al consultar mi estado de cuenta correspondiente al mes en curso, detecté cargos o retiros que en ningún momento realicé ni autoricé presencial ni digitalmente.
+TERCERO.- Presenté mi inconformidad en tiempo y forma ante la Unidad Especializada de Atención (UNE) de la institución, la cual dictaminó improcedente mi solicitud de manera infundada.`;
+      } else if (type === 'rendimientos') {
+        pretensionesText.value = "Solicito la liquidación forzosa y entrega inmediata de los recursos invertidos más los rendimientos devengados a la tasa pactada contractualmente.";
+        hechosText.value = 
+`PRIMERO.- En fecha acordada constituí un depósito de inversión a plazo determinado con la institución financiera regulada.
+SEGUNDO.- Habiéndose cumplido la fecha de vencimiento estipulada en el contrato, instruí formalmente el retiro total de mi capital e intereses devengados.
+TERCERO.- A la fecha de radicación de este escrito, la entidad ha incurrido en omisión injustificada y negativa a liberar mis fondos, reteniéndolos de forma unilateral.`;
+      } else if (type === 'bloqueo') {
+        pretensionesText.value = "Solicito el desbloqueo inmediato de mi cuenta bancaria y la reactivación del acceso total a mis recursos económicos sin restricción alguna.";
+        hechosText.value = 
+`PRIMERO.- Mantengo cuenta activa y con fondos propios legítimos con la institución financiera.
+SEGUNDO.- Sin que mediara requerimiento judicial o notificación fundada en ley, la institución inhabilitó mis canales de banca digital y tarjetas de débito.
+TERCERO.- He acreditado mi identidad y origen de fondos en sucursal física, recibiendo evasivas y una retención arbitraria que violenta mis garantías de usuario de servicios financieros.`;
+      }
+
+      showToast("Plantilla Aplicada", "Se insertó la estructura de hechos y pretensiones seleccionada.");
+    }
+
+    function generateFormalComplaint() {
+      // Recolección de datos
+      const nombreCompleto = `${document.getElementById('user-nombre').value} ${document.getElementById('user-paterno').value} ${document.getElementById('user-materno').value}`.trim();
+      const curp = document.getElementById('user-curp').value.toUpperCase();
+      const telefono = document.getElementById('user-telefono').value;
+      const email = document.getElementById('user-email').value;
+      const calle = document.getElementById('user-calle').value;
+      const colonia = document.getElementById('user-colonia').value;
+      const municipio = document.getElementById('user-municipio').value;
+      const cp = document.getElementById('user-cp').value;
+      const estado = document.getElementById('user-estado').value;
+      const domicilioCompleto = `${calle}, Col. ${colonia}, Alcaldía/Municipio ${municipio}, C.P. ${cp}, ${estado}`;
+
+      const uauKey = document.getElementById('uau-select').value;
+      const uau = UAU_DATA[uauKey] || UAU_DATA["UAU-A1"];
+
+      const entidad = document.getElementById('fin-nombre').value;
+      const producto = document.getElementById('fin-producto').value;
+      const contrato = document.getElementById('fin-contrato').value;
+      const monto = document.getElementById('fin-monto').value;
+      const pretensiones = document.getElementById('complaint-pretensiones').value;
+      const hechos = document.getElementById('complaint-hechos').value;
+
+      // Inyectar en el documento de vista previa legal
+      document.getElementById('legal-doc-uau-header').textContent = `UNIDAD DE ATENCIÓN A USUARIOS: ${uau.name.toUpperCase()}`;
+      document.getElementById('legal-doc-uau-city').textContent = uau.city.toUpperCase();
+      document.getElementById('legal-doc-rubro-quejoso').textContent = nombreCompleto.toUpperCase();
+      document.getElementById('legal-doc-rubro-financiera').textContent = entidad.toUpperCase();
+      
+      const hoy = new Date();
+      const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+      const fechaTexto = `${hoy.getDate()} DE ${meses[hoy.getMonth()].toUpperCase()} DE ${hoy.getFullYear()}`;
+      document.getElementById('legal-doc-fecha').textContent = fechaTexto;
+
+      // Hash de integridad forense simulado (SHA-256 Mock realista)
+      const fakeHash = generateFakeSHA256(nombreCompleto + entidad + contrato + hoy.getTime());
+      document.getElementById('legal-doc-folio-hash').textContent = `CND-2026-${Math.floor(10000 + Math.random() * 90000)}`;
+      document.getElementById('legal-doc-sha256').textContent = fakeHash;
+      document.getElementById('legal-doc-timestamp').textContent = `${hoy.toISOString().replace('T', ' ').substring(0, 19)} CST`;
+
+      document.getElementById('legal-doc-proemio-nombre').textContent = nombreCompleto.toUpperCase();
+      document.getElementById('legal-doc-proemio-curp').textContent = curp;
+      document.getElementById('legal-doc-proemio-domicilio').textContent = domicilioCompleto;
+      document.getElementById('legal-doc-proemio-email').textContent = email;
+      document.getElementById('legal-doc-proemio-tel').textContent = telefono;
+      document.getElementById('legal-doc-entidad-demandada').textContent = entidad.toUpperCase();
+      document.getElementById('legal-doc-contrato').textContent = contrato;
+      document.getElementById('legal-doc-producto').textContent = producto.toUpperCase();
+
+      document.getElementById('legal-doc-body-pretensiones').innerHTML = `
+        <p><strong>ÚNICA.-</strong> ${pretensiones}</p>
+        <p class="mt-2 font-mono text-xs">Monto liquidable reclamado: <strong>$${parseFloat(monto).toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN</strong>.</p>
+      `;
+
+      document.getElementById('legal-doc-body-hechos').textContent = hechos;
+      document.getElementById('legal-doc-firma-nombre').textContent = nombreCompleto.toUpperCase();
+
+      // Abrir modal de vista previa
+      document.getElementById('modal-legal-preview').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeLegalModal() {
+      document.getElementById('modal-legal-preview').classList.add('hidden');
+    }
+
+    function copyLegalTextToClipboard() {
+      const quejoso = document.getElementById('legal-doc-rubro-quejoso').textContent;
+      const entidad = document.getElementById('legal-doc-rubro-financiera').textContent;
+      const hechos = document.getElementById('legal-doc-body-hechos').textContent;
+      const pretensiones = document.getElementById('complaint-pretensiones').value;
+
+      const texto = `ESCRITO INICIAL DE RECLAMACIÓN CONDUSEF\nQUEJOSO: ${quejoso}\nVS\nENTIDAD: ${entidad}\n\nPRETENSIONES:\n${pretensiones}\n\nHECHOS:\n${hechos}`;
+
+      navigator.clipboard.writeText(texto).then(() => {
+        showToast("Copiado al Portapapeles", "El texto formal del escrito administrativo fue copiado exitosamente.");
+      });
+    }
+
+    function generateFakeSHA256(seed) {
+      let hash = 0;
+      for (let i = 0; i < seed.length; i++) {
+        hash = ((hash << 5) - hash) + seed.charCodeAt(i);
+        hash |= 0;
+      }
+      const hex = Math.abs(hash).toString(16).padStart(8, '0');
+      return (hex + "a9b7410c55f284e" + hex + "e3b0c44298fc1c149afbf4c8996fb924").substring(0, 64);
+    }
+
+    // ==========================================
+    // MÓDULO 3: ANALIZADOR DE RIESGO CON IA
+    // ==========================================
+    const SAMPLE_TEXTS = {
+      piramide: "¡Oportunidad única en México! Invierte en la nueva plataforma de trading algorítmico automatizado con Inteligencia Artificial. Rendimiento garantizado del 25% MENSUAL sin riesgo. Cupos limitados a las primeras 20 personas hoy. Si invitas a 3 amigos ganas bono extra del 10%. Manda WhatsApp para darte la cuenta CLABE de depósito.",
+      suplantacion: "ALERTA BBVA: Hemos detectado un inicio de sesion sospechoso desde Monterrey en su banca web. Su cuenta ha sido bloqueada temporalmente por seguridad. Para verificar su identidad y reactivar su token ingrese a: http://bbva-seguridad-login.cc/token de inmediato o su cuenta sera dada de baja definitiva.",
+      montadeudas: "¡Préstamo Aprobado en 5 minutos! Hasta $40,000 MXN sin consultar Buró de Crédito ni comprobante de ingresos. Descarga nuestra app 'Dinero Ya Express' en el enlace directo .apk. Solo pedimos acceso a tus contactos y cámara para validación rápida. Dinero en tu cuenta en 15 minutos.",
+      legitimo: "Estimado cliente, le informamos que el día de hoy se realizó una compra con su tarjeta de crédito terminación 4128 por $450.00 MXN en SUPERMERCADO SA. Si reconoce este cargo no es necesario responder. Para aclaraciones consulte en su app oficial bancaria o llame al reverso de su plástico."
+    };
+
+    function loadSampleAnalysis(type) {
+      const text = SAMPLE_TEXTS[type];
+      if (text) {
+        document.getElementById('ai-input-text').value = text;
+        showToast("Texto de Prueba Cargado", "Pulsa 'Escanear con IA' para iniciar el análisis heurístico.");
+      }
+    }
+
+    function clearAIText() {
+      document.getElementById('ai-input-text').value = '';
+    }
+
+    function runAIAnalysis() {
+      const text = document.getElementById('ai-input-text').value.trim();
+      if (!text) {
+        showToast("Texto requerido", "Por favor pega el mensaje o enlace sospechoso que deseas evaluar.");
+        return;
+      }
+
+      const scanningState = document.getElementById('ai-scanning-state');
+      const resultsPanel = document.getElementById('ai-results-panel');
+      const btnScan = document.getElementById('btn-scan-ai');
+
+      btnScan.disabled = true;
+      scanningState.classList.remove('hidden');
+
+      // Simulación de escaneo inteligente en 1.2 segundos
+      setTimeout(() => {
+        scanningState.classList.add('hidden');
+        btnScan.disabled = false;
+        evaluateHeuristics(text);
+        showToast("Análisis Completado", "Se generó el diagnóstico forense de ciberdefensa.");
+      }, 1200);
+    }
+
+    function evaluateHeuristics(text) {
+      const lower = text.toLowerCase();
+      let score = 5; // Base de bajo riesgo
+      let redFlags = [];
+
+      // 1. Promesas de rendimientos irreales (>10% mensual o "garantizado")
+      if (lower.includes('garantizado') || lower.includes('rendimiento') || lower.includes('duplica') || lower.includes('% mensual') || lower.includes('% diario') || lower.includes('ganancia fija')) {
+        score += 35;
+        redFlags.push({
+          title: "Promesa de Rendimiento Irreal / Ganancia Garantizada",
+          desc: "Ninguna entidad regulada por la CNBV puede prometer rendimientos fijos garantizados extraordinarios. Altísima probabilidad de esquema piramidal Ponzi.",
+          severidad: "CRÍTICA"
+        });
+      }
+
+      // 2. Presión de tiempo y urgencia
+      if (lower.includes('urgente') || lower.includes('bloqueada') || lower.includes('inmediato') || lower.includes('cupos limitados') || lower.includes('hoy mismo') || lower.includes('dada de baja')) {
+        score += 25;
+        redFlags.push({
+          title: "Ingeniería Social por Urgencia Artificial",
+          desc: "Los ciberdelincuentes inducen pánico o FOMO para que tomes decisiones apresuradas sin verificar en canales oficiales.",
+          severidad: "ALTA"
+        });
+      }
+
+      // 3. Enlaces sospechosos o acortados
+      if (lower.includes('.cc') || lower.includes('.xyz') || lower.includes('.top') || lower.includes('.apk') || lower.includes('http://') || lower.includes('bit.ly') || lower.includes('t.me')) {
+        score += 30;
+        redFlags.push({
+          title: "Dominio Web No Bancario o Archivo APK Malicioso",
+          desc: "Uso de extensiones fraudulentas o descarga de ejecutables fuera de tiendas oficiales para robar información privada.",
+          severidad: "CRÍTICA"
+        });
+      }
+
+      // 4. Esquema de referidos / multinivel
+      if (lower.includes('amigos') || lower.includes('invita') || lower.includes('referidos') || lower.includes('comisión por invitar')) {
+        score += 20;
+        redFlags.push({
+          title: "Mecanismo Multinivel de Captación Ilegal",
+          desc: "Condicionamiento de bonos a la atracción de nuevos aportantes de capital, típico de pirámides financieras.",
+          severidad: "ALTA"
+        });
+      }
+
+      // 5. Sin Buró de Crédito / Petición de anticipo
+      if (lower.includes('sin buró') || lower.includes('sin consultar buró') || lower.includes('anticipo') || lower.includes('depósito de liberación')) {
+        score += 30;
+        redFlags.push({
+          title: "Fraude de Crédito con Solicitud de Anticipo",
+          desc: "Las financieras autorizadas NUNCA piden dinero previo para otorgar un préstamo o cubrir supuestas pólizas de seguro.",
+          severidad: "CRÍTICA"
+        });
+      }
+
+      // 6. Solicitud de tokens o contraseñas
+      if (lower.includes('token') || lower.includes('contraseña') || lower.includes('nip') || lower.includes('cvv') || lower.includes('clave dinámica')) {
+        score += 35;
+        redFlags.push({
+          title: "Intento de Robo de Credenciales (Phishing)",
+          desc: "Intentan extraer tu token de seguridad para vaciar cuentas mediante transferencias SPEI no autorizadas.",
+          severidad: "CRÍTICA"
+        });
+      }
+
+      // Ajuste de límites
+      if (score > 98) score = 98;
+      if (redFlags.length === 0) score = 8; // Texto seguro o legítimo
+
+      // Renderizar Termómetro
+      const scoreEl = document.getElementById('ai-risk-score');
+      const labelEl = document.getElementById('ai-risk-label');
+      const barEl = document.getElementById('ai-risk-bar');
+      const tagEl = document.getElementById('ai-risk-tag');
+      const flagsContainer = document.getElementById('ai-flags-container');
+      const recBox = document.getElementById('ai-recommendation-box');
+
+      scoreEl.textContent = `${score}%`;
+      barEl.style.width = `${score}%`;
+
+      if (score >= 65) {
+        // Riesgo Crítico (Rojo)
+        scoreEl.className = "text-5xl font-extrabold text-red-500 font-mono tracking-tight animate-pulse";
+        labelEl.className = "text-xs font-bold uppercase tracking-wider text-red-400 mt-1";
+        labelEl.textContent = "PELIGRO CRÍTICO - ALTA PROBABILIDAD DE ESTAFA";
+        barEl.className = "h-full rounded-full bg-gradient-to-r from-red-600 to-rose-500 transition-all duration-700";
+        tagEl.className = "text-xs font-mono font-bold px-2 py-0.5 rounded bg-red-500/20 text-red-400 border border-red-500/30";
+        tagEl.textContent = "ALERTA ROJA";
+        recBox.innerHTML = `
+          <strong class="text-red-400 block mb-1">ACCIONES DE EMERGENCIA RECOMENDADAS:</strong>
+          <ul class="list-disc pl-4 space-y-1 text-slate-300">
+            <li><strong>NO transfieras dinero</strong> ni proporciones números de tarjeta o identificaciones.</li>
+            <li>Bloquea el número en WhatsApp o marca el correo como Spam malicioso.</li>
+            <li>Reporta a la <strong>Policía Cibernética</strong> (088 o @SSC_CDMX en X/Twitter).</li>
+            <li>Presiona el botón "Reportar Fraude" en esta plataforma para alertar a la red.</li>
+          </ul>
+        `;
+      } else if (score >= 30) {
+        // Riesgo Medio (Amarillo)
+        scoreEl.className = "text-5xl font-extrabold text-amber-400 font-mono tracking-tight";
+        labelEl.className = "text-xs font-bold uppercase tracking-wider text-amber-300 mt-1";
+        labelEl.textContent = "PRECAUCIÓN - DETECTADAS BANDERAS SOSPECHOSAS";
+        barEl.className = "h-full rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 transition-all duration-700";
+        tagEl.className = "text-xs font-mono font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30";
+        tagEl.textContent = "RIESGO MODERADO";
+        recBox.innerHTML = `
+          <strong class="text-amber-400 block mb-1">RECOMENDACIÓN:</strong>
+          No des clic en ningún enlace adjunto. Si dicen ser tu banco, cuelga y comunícate directamente al número de teléfono impreso en la parte trasera de tu plástico físico.
+        `;
+      } else {
+        // Riesgo Bajo (Verde)
+        scoreEl.className = "text-5xl font-extrabold text-emerald-400 font-mono tracking-tight";
+        labelEl.className = "text-xs font-bold uppercase tracking-wider text-emerald-300 mt-1";
+        labelEl.textContent = "BAJO RIESGO - COMUNICACIÓN APARENTEMENTE LEGÍTIMA";
+        barEl.className = "h-full rounded-full bg-gradient-to-r from-emerald-500 to-cyan-400 transition-all duration-700";
+        tagEl.className = "text-xs font-mono font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+        tagEl.textContent = "VERIFICADO SEGURO";
+        recBox.innerHTML = `
+          <strong class="text-emerald-400 block mb-1">DICTAMEN:</strong>
+          No se detectaron vectores agresivos de phishing ni promesas ilegales de rendimientos. Mantén siempre la prudencia de no compartir contraseñas definitivas.
+        `;
+      }
+
+      // Renderizar banderas rojas
+      if (redFlags.length === 0) {
+        flagsContainer.innerHTML = `
+          <div class="bg-emerald-950/40 border border-emerald-500/20 p-3 rounded-lg text-emerald-300 text-xs flex items-center gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+            <span>No se identificaron patrones de ingeniería social ni enlaces apócrifos.</span>
+          </div>
+        `;
+      } else {
+        flagsContainer.innerHTML = redFlags.map(flag => `
+          <div class="bg-slate-900/90 p-3 rounded-lg border border-red-500/30 text-xs space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-red-400 flex items-center gap-1.5">
+                <i data-lucide="alert-circle" class="w-3.5 h-3.5 text-red-400"></i>
+                ${flag.title}
+              </span>
+              <span class="text-[10px] font-mono font-bold text-red-300 bg-red-950 px-1.5 py-0.2 rounded border border-red-500/30">${flag.severidad}</span>
+            </div>
+            <p class="text-slate-300 text-[11px] leading-relaxed">${flag.desc}</p>
+          </div>
+        `).join('');
+      }
+
+      lucide.createIcons();
+    }
+
+    // ==========================================
+    // MÓDULO 4: RADAR DE ALERTAS Y REPORTE
+    // ==========================================
+    let currentRadarFilter = 'all';
+
+    function renderRadarFeed(filter = currentRadarFilter) {
+      const container = document.getElementById('radar-feed-list');
+      if (!container) return;
+
+      const filtered = communityReports.filter(rep => {
+        if (filter === 'all') return true;
+        return rep.categoria === filter;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 text-center text-slate-400 text-xs">
+            No hay alertas registradas en esta categoría actualmente.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(rep => {
+        let badgeColor = "bg-red-500/20 text-red-400 border-red-500/30";
+        let iconName = "alert-triangle";
+
+        if (rep.categoria === 'suplantacion') {
+          badgeColor = "bg-purple-500/20 text-purple-300 border-purple-500/30";
+          iconName = "copy";
+        } else if (rep.categoria === 'piramide') {
+          badgeColor = "bg-amber-500/20 text-amber-400 border-amber-500/30";
+          iconName = "trending-down";
+        } else if (rep.categoria === 'montadeudas') {
+          badgeColor = "bg-rose-500/20 text-rose-300 border-rose-500/30";
+          iconName = "smartphone";
+        } else if (rep.categoria === 'phishing') {
+          badgeColor = "bg-red-500/20 text-red-400 border-red-500/30";
+          iconName = "globe";
+        }
+
+        return `
+          <div class="bg-slate-900/80 rounded-xl p-4 border border-slate-800 hover:border-cyan-500/30 transition flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div class="space-y-1.5 flex-1">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono font-bold border ${badgeColor}">
+                  <i data-lucide="${iconName}" class="w-3 h-3"></i>
+                  ${rep.categoria.toUpperCase()}
+                </span>
+                <span class="text-xs text-slate-400 font-mono">Canal: <strong class="text-slate-200">${rep.canal}</strong></span>
+                <span class="text-slate-500 text-xs">•</span>
+                <span class="text-xs text-slate-400 font-mono">${rep.fecha}</span>
+              </div>
+
+              <h4 class="text-sm font-bold text-white">${rep.nombre}</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">${rep.descripcion}</p>
+
+              ${rep.url ? `
+                <div class="text-[11px] font-mono text-cyan-400 truncate pt-1">
+                  Enlace/Dato: <span class="text-slate-400 select-all">${rep.url}</span>
+                </div>
+              ` : ''}
+            </div>
+
+            <div class="flex items-center sm:flex-col justify-between sm:justify-center gap-2 border-t sm:border-t-0 sm:border-l border-slate-800 pt-2 sm:pt-0 sm:pl-4 shrink-0">
+              <div class="text-center">
+                <span class="block text-xs font-mono font-bold text-white">${rep.confirmaciones}</span>
+                <span class="text-[10px] text-slate-400">confirmaciones</span>
+              </div>
+              <button onclick="confirmAlert('${rep.id}')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 text-xs font-semibold flex items-center gap-1 transition active:scale-95">
+                <i data-lucide="thumbs-up" class="w-3 h-3"></i>
+                <span>Confirmar</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    function filterRadar(cat) {
+      currentRadarFilter = cat;
+
+      document.querySelectorAll('.radar-filter').forEach(btn => {
+        btn.className = "radar-filter px-3 py-1.5 rounded-lg bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-700 text-xs font-semibold";
+      });
+
+      const activeBtn = document.getElementById(`rf-${cat}`);
+      if (activeBtn) {
+        activeBtn.className = "radar-filter px-3 py-1.5 rounded-lg bg-cyan-600 text-white text-xs font-semibold";
+      }
+
+      renderRadarFeed(cat);
+    }
+
+    function confirmAlert(id) {
+      const rep = communityReports.find(r => r.id === id);
+      if (rep) {
+        rep.confirmaciones += 1;
+        saveReportsToStorage();
+        renderRadarFeed();
+        showToast("Confirmación Registrada", "Gracias por ayudar a consolidar la alerta comunitaria.");
+      }
+    }
+
+    function updateRadarStats() {
+      const critical = communityReports.length + 24;
+      document.getElementById('stat-reports-today').textContent = communityReports.length + 138;
+      document.getElementById('stat-critical-alerts').textContent = critical;
+      document.getElementById('badge-radar-count').textContent = communityReports.length;
+    }
+
+    function openModalReporte() {
+      document.getElementById('modal-reporte').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeModalReporte() {
+      document.getElementById('modal-reporte').classList.add('hidden');
+    }
+
+    function submitCommunityReport() {
+      const name = document.getElementById('rep-name').value.trim();
+      const cat = document.getElementById('rep-category').value;
+      const channel = document.getElementById('rep-channel').value;
+      const url = document.getElementById('rep-url').value.trim();
+      const desc = document.getElementById('rep-desc').value.trim();
+
+      if (!name || !desc) {
+        showToast("Campos incompletos", "Por favor completa el nombre de la app y la descripción del engaño.");
+        return;
+      }
+
+      const newRep = {
+        id: "rep-" + Date.now(),
+        nombre: name,
+        categoria: cat,
+        canal: channel,
+        url: url || "No especificado",
+        descripcion: desc,
+        fecha: "Hace un momento",
+        confirmaciones: 1
+      };
+
+      communityReports.unshift(newRep);
+      saveReportsToStorage();
+      updateRadarStats();
+      renderRadarFeed();
+      closeModalReporte();
+
+      // Limpiar campos
+      document.getElementById('report-form').reset();
+
+      switchTab('radar');
+      showToast("Alerta Publicada", "Tu reporte ha sido integrado en vivo al Radar Comunitario.");
+    }
+
+    function saveReportsToStorage() {
+      localStorage.setItem('escudo_reports', JSON.stringify(communityReports));
+    }
+
+    // ==========================================
+    // NOTIFICACIONES TOAST & UTILIDADES
+    // ==========================================
+    let toastTimeout = null;
+
+    function showToast(title, message) {
+      const toast = document.getElementById('toast-notification');
+      document.getElementById('toast-title').textContent = title;
+      document.getElementById('toast-message').textContent = message;
+
+      toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+      }, 3500);
+    }
+
+    function showSecurityAdviceToast() {
+      showToast("Regla de Oro", "Nunca proporciones códigos SMS o autorizaciones en tu app bancaria a quien te llame.");
+    }
+
+    function closeAllModals() {
+      closeModalSipres();
+      closeLegalModal();
+      closeModalReporte();
+    }
+  </script>
+</body>
+</html>
